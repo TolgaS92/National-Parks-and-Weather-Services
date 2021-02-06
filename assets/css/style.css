@@ -1,2 +1,7 @@
 /*  keep it simple for now, follow wire frame
 */
+.logo {
+    float: left;
+    margin: 2px 0 0 12px;
+    align-self: auto;
+}
