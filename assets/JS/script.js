@@ -35,4 +35,5 @@ function carousel() {
 
 
 
-//
+//stored locally are 'Your recent adventures' which are the parks you looked at already
+//at the bottom of the page you will always see 'Your recent adventures' to help you plan your vacation, recents populates of the picture of that park you looked at
