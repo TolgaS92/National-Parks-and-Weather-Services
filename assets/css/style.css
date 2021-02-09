@@ -2,6 +2,12 @@
 */
 .logo {
     float: left;
-    margin: 2px 0 0 12px;
+    margin: 2px 0 0 25px;
     align-self: auto;
+}
+.navbar-item {
+    margin-top: 25px;
+    font-size: large;
+    font-weight: bolder;
+    margin-left: 100px;
 }
