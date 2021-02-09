@@ -23,17 +23,28 @@ function carousel() {
   setTimeout(carousel, 2000); // Change image every 2 seconds
 }
 
+//weather api
+//we need the weather api to find the location of the chosen park and populate that data into the weatherBox on the html... somehow mapquest helps with this
+var longitude = "";
+var latitude = "";
 
+function weatherLatLon(){
+  const requestWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lon=" + longitude + "&lat=" + latitude + "&appid=ca7c03ab6ebfee5c7d96f4deeccbecc0";
 
+  fetch(requestWeatherUrl)
+  .then(function(data){
+    return data.json();
+  }) .then(function(data){
+    console.log(data);
+  })
+}
 
-// API's
-//Open weater
-//nps
-//mapquest
+weatherLatLon();
 
-
-
+//
 
 
 //stored locally are 'Your recent adventures' which are the parks you looked at already
 //at the bottom of the page you will always see 'Your recent adventures' to help you plan your vacation, recents populates of the picture of that park you looked at
+
+ 
