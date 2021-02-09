@@ -36,11 +36,40 @@ function trailFind() {
     }).then(function (data) {
       console.log(data);
       console.log(data.data);
+
       for (let i = 0; i < data.data.length; i++) {
         console.log(data.data.length);
        latitude = data.data[i].latitude;
        longitude = data.data[i].longitude;
        console.log(latitude);
+       console.log(longitude);
+
+        /* console.log(data.data.length); */
+        let response = data.data[i];
+        console.log(response.fullName);
+        /* let card = document.getElementById("#") */
+        let divPark = document.getElementById("#parks");
+        let pTag = $("<p>").addClass("title").text(response.fullName);
+        let imgSrc = $("<img>").attr("style", "width: 18rem");
+        //create a link that attaches to the picture of the park
+        //this takes you to the weather
+        //and park information which is function we haven't written yet
+        if (response.images[0] && response.images[0].url) {
+          imgSrc.attr("src", response.images[0].url);
+          //how many images we have
+          //math.floor.random
+          //images.length
+          //
+        }
+        /* let divCardContent = $("<div>").addClass("card-content");
+        let cardBodyDiv = $("<div>").addClass("card-body");
+        let mediaClass = $("<div>").addClass("media");
+        let mediaContent = $("<div>").addClass("media-content"); */
+
+
+        $("#park-lf").append(pTag.append(imgSrc));
+        $("#parks").append(divPark);
+        weatherLatLon();
       }
     })
 }
@@ -58,22 +87,23 @@ $("#SubmitBtn").on("click", function () {
 //get from park api 
 
 //wherever call function weatherLatLon need to put in arguments of latitude longitude 
-// function weatherLatLon(longitude, latitude){
-//   const requestWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lon=" + longitude + "&lat=" + latitude + "&appid=ca7c03ab6ebfee5c7d96f4deeccbecc0";
+function weatherLatLon(){
+  const requestWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lon=" + longitude + "&lat=" + latitude + "&appid=ca7c03ab6ebfee5c7d96f4deeccbecc0";
 
-//   fetch(requestWeatherUrl)
-//   .then(function(data){
-//     return data.json();
-//   }) .then(function(data){
-//     console.log(data);
-//   })
+  fetch(requestWeatherUrl)
+  .then(function(data){
+    return data.json();
+  }) .then(function(data){
+    console.log(data);
+  })
 
   //call long and lat from nps object that is returned from fetch
   //within that object we need to grab the lat and long individually and pass them into the variables of longitude and latitude
   //
-// }
+}
 
-//weatherLatLon();
+
+console.log(weatherLatLon);
 
 //we need the weather api to find the location of the chosen park and populate that data into the weatherBox on the html... somehow mapquest helps with this
 
