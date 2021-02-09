@@ -23,7 +23,9 @@ function carousel() {
   setTimeout(carousel, 2000); // Change image every 2 seconds
 }
 
-let state = "";
+let latitude ;
+let longitude ;
+let state ;
 //statecode function it calls the parks
 function trailFind() {
   const requestUrl = "https://developer.nps.gov/api/v1/parks?stateCode=" + state + "&api_key=egaEomzHPAgI7vA1qMt3Hl0c3Po2WGueGNbdExWh";
@@ -36,6 +38,9 @@ function trailFind() {
       console.log(data.data);
       for (let i = 0; i < data.data.length; i++) {
         console.log(data.data.length);
+       latitude = data.data[i].latitude;
+       longitude = data.data[i].longitude;
+       console.log(latitude);
       }
     })
 }
@@ -46,26 +51,32 @@ $("#SubmitBtn").on("click", function () {
 })
 
 
+
 //weather api
+//we need the weather api to find the location of the chosen park and populate that data into the weatherBox on the html... somehow mapquest helps with this
+//use .find in jQuery to grab lat and long 
+//get from park api 
+
+//wherever call function weatherLatLon need to put in arguments of latitude longitude 
+// function weatherLatLon(longitude, latitude){
+//   const requestWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lon=" + longitude + "&lat=" + latitude + "&appid=ca7c03ab6ebfee5c7d96f4deeccbecc0";
+
+//   fetch(requestWeatherUrl)
+//   .then(function(data){
+//     return data.json();
+//   }) .then(function(data){
+//     console.log(data);
+//   })
+
+  //call long and lat from nps object that is returned from fetch
+  //within that object we need to grab the lat and long individually and pass them into the variables of longitude and latitude
+  //
+// }
+
+//weatherLatLon();
 
 //we need the weather api to find the location of the chosen park and populate that data into the weatherBox on the html... somehow mapquest helps with this
-var longitude = "";
-var latitude = "";
 
-function weatherLatLon(){
-  const requestWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lon=" + longitude + "&lat=" + latitude + "&appid=ca7c03ab6ebfee5c7d96f4deeccbecc0";
-
-  fetch(requestWeatherUrl)
-  .then(function(data){
-    return data.json();
-  }) .then(function(data){
-    console.log(data);
-  })
-}
-
-weatherLatLon();
-
-//
 
 
 //stored locally are 'Your recent adventures' which are the parks you looked at already
