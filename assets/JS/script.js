@@ -35,8 +35,31 @@ function trailFind() {
     }).then(function (data) {
       console.log(data);
       console.log(data.data);
+
       for (let i = 0; i < data.data.length; i++) {
-        console.log(data.data.length);
+
+        /* console.log(data.data.length); */
+        let response = data.data[i];
+        console.log(response.fullName);
+        /* let card = document.getElementById("#") */
+        let divPark = document.getElementById("#parks");
+        let pTag = $("<p>").addClass("title").text(response.fullName);
+        let imgSrc = $("<img>").attr("style", "width: 18rem");
+        if (response.images[0] && response.images[0].url) {
+          imgSrc.attr("src", response.images[0].url);
+          //how many images we have
+          //math.floor.random
+          //images.length
+          //
+        }
+        /* let divCardContent = $("<div>").addClass("card-content");
+        let cardBodyDiv = $("<div>").addClass("card-body");
+        let mediaClass = $("<div>").addClass("media");
+        let mediaContent = $("<div>").addClass("media-content"); */
+
+
+        $("#park-lf").append(pTag.append(imgSrc));
+        $("#parks").append(divPark);
       }
     })
 }
