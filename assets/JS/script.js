@@ -23,7 +23,31 @@ function carousel() {
   setTimeout(carousel, 2000); // Change image every 2 seconds
 }
 
+let state = "";
+//statecode function it calls the parks
+function trailFind() {
+  const requestUrl = "https://developer.nps.gov/api/v1/parks?stateCode=" + state + "&api_key=egaEomzHPAgI7vA1qMt3Hl0c3Po2WGueGNbdExWh";
+
+  fetch(requestUrl)
+    .then(function (data) {
+      return data.json();
+    }).then(function (data) {
+      console.log(data);
+      console.log(data.data);
+      for (let i = 0; i < data.data.length; i++) {
+        console.log(data.data.length);
+      }
+    })
+}
+
+$("#SubmitBtn").on("click", function () {
+  state = $("#given-input").val().trim();
+  trailFind();
+})
+
+
 //weather api
+
 //we need the weather api to find the location of the chosen park and populate that data into the weatherBox on the html... somehow mapquest helps with this
 var longitude = "";
 var latitude = "";
