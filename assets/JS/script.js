@@ -23,7 +23,9 @@ function carousel() {
   setTimeout(carousel, 2000); // Change image every 2 seconds
 }
 
-let state = "";
+let latitude ;
+let longitude ;
+let state ;
 //statecode function it calls the parks
 function trailFind() {
   const requestUrl = "https://developer.nps.gov/api/v1/parks?stateCode=" + state + "&api_key=egaEomzHPAgI7vA1qMt3Hl0c3Po2WGueGNbdExWh";
@@ -36,6 +38,11 @@ function trailFind() {
       console.log(data.data);
 
       for (let i = 0; i < data.data.length; i++) {
+        console.log(data.data.length);
+       latitude = data.data[i].latitude;
+       longitude = data.data[i].longitude;
+       console.log(latitude);
+       console.log(longitude);
 
         /* console.log(data.data.length); */
         let response = data.data[i];
@@ -44,6 +51,9 @@ function trailFind() {
         let divPark = document.getElementById("#parks");
         let pTag = $("<p>").addClass("title").text(response.fullName);
         let imgSrc = $("<img>").attr("style", "width: 18rem");
+        //create a link that attaches to the picture of the park
+        //this takes you to the weather
+        //and park information which is function we haven't written yet
         if (response.images[0] && response.images[0].url) {
           imgSrc.attr("src", response.images[0].url);
           //how many images we have
@@ -59,6 +69,7 @@ function trailFind() {
 
         $("#park-lf").append(pTag.append(imgSrc));
         $("#parks").append(divPark);
+        weatherLatLon();
       }
     })
 }
@@ -69,12 +80,13 @@ $("#SubmitBtn").on("click", function () {
 })
 
 
+
 //weather api
-
 //we need the weather api to find the location of the chosen park and populate that data into the weatherBox on the html... somehow mapquest helps with this
-var longitude = "";
-var latitude = "";
+//use .find in jQuery to grab lat and long 
+//get from park api 
 
+//wherever call function weatherLatLon need to put in arguments of latitude longitude 
 function weatherLatLon(){
   const requestWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lon=" + longitude + "&lat=" + latitude + "&appid=ca7c03ab6ebfee5c7d96f4deeccbecc0";
 
@@ -84,11 +96,17 @@ function weatherLatLon(){
   }) .then(function(data){
     console.log(data);
   })
+
+  //call long and lat from nps object that is returned from fetch
+  //within that object we need to grab the lat and long individually and pass them into the variables of longitude and latitude
+  //
 }
 
-weatherLatLon();
 
-//
+console.log(weatherLatLon);
+
+//we need the weather api to find the location of the chosen park and populate that data into the weatherBox on the html... somehow mapquest helps with this
+
 
 
 //stored locally are 'Your recent adventures' which are the parks you looked at already
