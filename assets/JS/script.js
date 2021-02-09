@@ -34,6 +34,10 @@ function trailFind() {
       return data.json();
     }).then(function (data) {
       console.log(data);
+      console.log(data.data);
+      for (let i = 0; i < data.data.length; i++) {
+        console.log(data.data.length);
+      }
     })
 }
 
