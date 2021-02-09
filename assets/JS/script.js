@@ -23,9 +23,9 @@ function carousel() {
   setTimeout(carousel, 2000); // Change image every 2 seconds
 }
 
-let latitude ;
-let longitude ;
-let state ;
+let latitude;
+let longitude;
+let state;
 //statecode function it calls the parks
 function trailFind() {
   const requestUrl = "https://developer.nps.gov/api/v1/parks?stateCode=" + state + "&api_key=egaEomzHPAgI7vA1qMt3Hl0c3Po2WGueGNbdExWh";
@@ -34,22 +34,27 @@ function trailFind() {
     .then(function (data) {
       return data.json();
     }).then(function (data) {
-      console.log(data);
-      console.log(data.data);
+      /* console.log(data);
+      console.log(data.data); */
 
       for (let i = 0; i < data.data.length; i++) {
-        console.log(data.data.length);
-       latitude = data.data[i].latitude;
-       longitude = data.data[i].longitude;
-       console.log(latitude);
-       console.log(longitude);
+        /* console.log(data.data.length); */
+        latitude = data.data[i].latitude;
+        longitude = data.data[i].longitude;
+        /* console.log(latitude);
+        console.log(longitude); */
 
         /* console.log(data.data.length); */
         let response = data.data[i];
-        console.log(response.fullName);
+        /* console.log(response.fullName); */
         /* let card = document.getElementById("#") */
-        let divPark = document.getElementById("#parks");
+        let parkTag = document.getElementById("#parks");
+        let divAnc = $("<div>").addClass("column is-4 tile is-ancestor");
+        let tile = $("<div>").addClass("tile");
+        let divParent = $("<div>").addClass("tile is-parent");
+        let article = $("<article>").addClass("tile is-child box");
         let pTag = $("<p>").addClass("title").text(response.fullName);
+        let fig = $("<figure>").addClass("image is-4by3");
         let imgSrc = $("<img>").attr("style", "width: 18rem");
         //create a link that attaches to the picture of the park
         //this takes you to the weather
@@ -61,14 +66,20 @@ function trailFind() {
           //images.length
           //
         }
+        divAnc.append(tile);
+        tile.append(divParent);
+        divParent.append(article);
+        article.append(pTag, fig);
+        fig.append(imgSrc);
+        $("#parks").append(divAnc);
+
         /* let divCardContent = $("<div>").addClass("card-content");
         let cardBodyDiv = $("<div>").addClass("card-body");
         let mediaClass = $("<div>").addClass("media");
         let mediaContent = $("<div>").addClass("media-content"); */
 
 
-        $("#park-lf").append(pTag.append(imgSrc));
-        $("#parks").append(divPark);
+
         weatherLatLon();
       }
     })
@@ -87,23 +98,21 @@ $("#SubmitBtn").on("click", function () {
 //get from park api 
 
 //wherever call function weatherLatLon need to put in arguments of latitude longitude 
-function weatherLatLon(){
+function weatherLatLon() {
   const requestWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lon=" + longitude + "&lat=" + latitude + "&appid=ca7c03ab6ebfee5c7d96f4deeccbecc0";
 
   fetch(requestWeatherUrl)
-  .then(function(data){
-    return data.json();
-  }) .then(function(data){
-    console.log(data);
-  })
+    .then(function (data) {
+      return data.json();
+    }).then(function (data) {
+      console.log(data);
+    })
 
   //call long and lat from nps object that is returned from fetch
   //within that object we need to grab the lat and long individually and pass them into the variables of longitude and latitude
   //
 }
 
-
-console.log(weatherLatLon);
 
 //we need the weather api to find the location of the chosen park and populate that data into the weatherBox on the html... somehow mapquest helps with this
 
@@ -112,4 +121,4 @@ console.log(weatherLatLon);
 //stored locally are 'Your recent adventures' which are the parks you looked at already
 //at the bottom of the page you will always see 'Your recent adventures' to help you plan your vacation, recents populates of the picture of that park you looked at
 
- 
+
