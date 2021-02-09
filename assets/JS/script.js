@@ -8,7 +8,7 @@
 //at the bottom of the page you will always see 'Your recent adventures' to help you plan your vacation, recents populates of the picture of that park you looked at
 
 //image carousel, not finished
-var slideIndex = 0;
+let slideIndex = 0;
 carousel();
 
 function carousel() {
@@ -18,8 +18,8 @@ function carousel() {
     x[i].style.display = "none";
   }
   slideIndex++;
-  if (slideIndex > x.length) {slideIndex = 1}
-  x[slideIndex-1].style.display = "block";
+  if (slideIndex > x.length) { slideIndex = 1 }
+  x[slideIndex - 1].style.display = "block";
   setTimeout(carousel, 2000); // Change image every 2 seconds
 }
 
