@@ -23,36 +23,28 @@ function carousel() {
   setTimeout(carousel, 2000); // Change image every 2 seconds
 }
 
-//chosen stateCode
-let state = "";
-//statecode function it calls the parks
-function trailFind() {
-  const requestUrl = "https://developer.nps.gov/api/v1/parks?stateCode=" + state + "&api_key=egaEomzHPAgI7vA1qMt3Hl0c3Po2WGueGNbdExWh";
+//weather api
+//we need the weather api to find the location of the chosen park and populate that data into the weatherBox on the html... somehow mapquest helps with this
+var longitude = "";
+var latitude = "";
 
-  fetch(requestUrl)
-    .then(function (data) {
-      return data.json();
-    }).then(function (data) {
-      console.log(data);
-      console.log(data.data);
-      for (let i = 0; i < data.data.length; i++) {
-        console.log(data.data.length);
-      }
-    })
+function weatherLatLon(){
+  const requestWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lon=" + longitude + "&lat=" + latitude + "&appid=ca7c03ab6ebfee5c7d96f4deeccbecc0";
+
+  fetch(requestWeatherUrl)
+  .then(function(data){
+    return data.json();
+  }) .then(function(data){
+    console.log(data);
+  })
 }
 
-$("#SubmitBtn").on("click", function () {
-  state = $("#given-input").val().trim();
-  trailFind();
-})
-// API's
-//Open weater
-//nps
-//mapquest
+weatherLatLon();
 
-
-
+//
 
 
 //stored locally are 'Your recent adventures' which are the parks you looked at already
 //at the bottom of the page you will always see 'Your recent adventures' to help you plan your vacation, recents populates of the picture of that park you looked at
+
+ 
