@@ -22,131 +22,78 @@ We will need a results html to populate the results from the search, may not nee
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
 
 
 </head>
 
 
 <body>
-    <div class="top-bar">
-        <div class="top-bar-left">
-            <ul class="dropdown menu" data-dropdown-menu>
-                <div class="logo"> <img src="images/NPWS_logo.png" width="200" height="200">
-                </div>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./about.html">About</a></li>
-            </ul>
+    <nav>
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <ul class="dropdown menu" data-dropdown-menu>
+                    <div class="logo">
+                        <a href="index.html"><img src="images/NPWS_logo.png" width="100" height="100"></a>
+                    </div>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./about.html">About</a></li>
+                </ul>
+            </div>
         </div>
+    </nav>
+
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x small-up-2 medium-up-3">
+            <div class="cell">
+                <div class="card">
+                    <a href="https://www.nps.gov/articles/hikingetiquette.htm">
+                        <img src="https://www.nps.gov/articles/images/JUBA_cyclistsontrail_911.jpg?maxwidth=1200&maxheight=1200&autorotate=false"
+                            width="2000px" height="1850px" alt="Placeholder image">
+                    </a>
+                    <div class="card-section">
+                        <p> Hiking etiquette 101 right here. We highly recommend for everyone's sake that you take the
+                            time
+                            to get this down. no excuses.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="card">
+                    <a
+                        href="https://www.thrillist.com/travel/nation/best-national-parks-in-america-grand-canyon-yosemite-and-yellowstone">
+                        <img src="https://assets3.thrillist.com/v1/image/2739834/2880x3000/scale;jpeg_quality=60;progressive.jpg"
+                            width="2000px" height="1850px" alt="Placeholder image">
+                    </a>
+                    <div class="card-section">
+                        <p>If your're looking to explore and enjoy some truly beautiful parks look in here and find the
+                            park you're looking for. Warning these parks are highly populated. Enter at your own
+                            introverted
+                            risk.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="card">
+                    <a href="https://www.theguardian.com/environment/2018/may/25/best-us-national-parks-escape-crowds">
+                        <img src="https://i.guim.co.uk/img/media/6bee5a392f9b7e8eb50f3d8ff97ad4aeea615b6d/0_51_2048_1229/master/2048.jpg?width=1900&quality=85&auto=format&fit=max&s=71e81f558e744554a56194f3a5cd5379"
+                            width="2000px" height="1850px" alt="Placeholder image">
+                    </a>
+                    <div class="card-section">
+                        <p> So you kept reading, because you actually are an introvert, or maybe you prefer to blaze
+                            your
+                            own trail. We have this lovely article for you to do just that. Enjoy. You are welcome.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Where the local storage will go for Your Recent Adventures -->
+    <div id="recent-adventures">
+        <h2>Your Recent Adventures: </h2>
     </div>
-
-    <container>
-        <div class="columns">
-            <div class="card">
-                <div class="card-image">
-                    <figure class="">
-                        <a href="https://www.nps.gov/articles/hikingetiquette.htm">
-                        <img src="https://www.nps.gov/articles/images/JUBA_cyclistsontrail_911.jpg?maxwidth=1200&maxheight=1200&autorotate=false" width="2000px" height="1850px" alt="Placeholder image">
-                        </a>
-                    </figure>
-                </div>
-                <div class="card-content">
-                    <div class="content">
-                        Hiking etiquette 101 right here. We highly recommend for everyone's sake that you take the time to get this down. no excuses.
-                    </div>
-                </div>
-            </div>
-
-            <div class="card column">
-                <div class="card-content">
-                    <div class="content">
-                        About the oage text will go here.
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-image">
-                    <figure class="">
-                        <a href="https://www.thrillist.com/travel/nation/best-national-parks-in-america-grand-canyon-yosemite-and-yellowstone">
-                        <img src="https://assets3.thrillist.com/v1/image/2739834/2880x3000/scale;jpeg_quality=60;progressive.jpg" width="2000px" height="1850px" alt="Placeholder image">
-                        </a>
-                    </figure>
-                </div>
-                <div class="card-content">
-                    <div class="content">
-                        If your're looking to explore and enjoy some truly beautiful parks look in here and find the park you're looking for. Warning these parks are highly populated. Enter at your own introverted risk.
-                    </div>
-                </div>
-            </div>
-
-            <div class="card column">
-                <div class="card-content">
-                    <div class="content">
-                        About the page text will go here.
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-image">
-                    <figure class="">
-                        <a href="https://www.theguardian.com/environment/2018/may/25/best-us-national-parks-escape-crowds">
-                        <img src="https://i.guim.co.uk/img/media/6bee5a392f9b7e8eb50f3d8ff97ad4aeea615b6d/0_51_2048_1229/master/2048.jpg?width=1900&quality=85&auto=format&fit=max&s=71e81f558e744554a56194f3a5cd5379" width="2000px" height="1850px" alt="Placeholder image">
-                        </a>
-                    </figure>
-                </div>
-                <div class="card-content">
-                    <div class="content">
-                        So you kept reading, because you actually are an introvert, or maybe you prefer to blaze your own trail. We have this lovely article for you to do just that. Enjoy. You are welcome.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Where the local storage will go for Your Recent Adventures -->
-
-        <div id="recent-adventures">
-            <h2>Your Recent Adventures: </h2>
-        </div>
-        <div class="container">
-            <div class="columns">
-                <div class="column">
-                    <div class="card">
-                        <div class="card-image">
-                            <div class="column">
-                                <figure class="image is-128x128">
-                                    <img src="https://bulma.io/images/placeholders/1280x960.png"
-                                        alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="card-content">
-                                <div class="media">
-                                    <div class="media-content">
-                                        <p class="title is-4">John Smith</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-
-                </div>
-                <div class="column">
-
-                </div>
-                <div class="column">
-
-                </div>
-            </div>
-        </div>
-
-
-    </container>
-
-
-
     <script src="assets/JS/script.js"></script>
 </body>
 
