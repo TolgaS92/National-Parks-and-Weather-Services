@@ -22,9 +22,9 @@ We will need a results html to populate the results from the search
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 
 
 </head>
@@ -61,47 +61,45 @@ We will need a results html to populate the results from the search
         </header>
     </div>
     <div class="container">
-        <div class="container">
-            <h1>I want to visit a National Park in the State of - use state code:</h1>
-            <div class="columns">
-                <div class="column">
-                    <input class="input" type="text" placeholder="Text input" id="given-input">
-                </div>
-                <div class="column">
-                    <button class="button is-primary" id="SubmitBtn">Submit</button>
-                </div>
-            </div>
-        </div>
         <!-- add in imges -->
-        <div class="container w3-content w3-section mt-5" style="max-width:500px">
+        <div class="container w3-content w3-section mt-5 mb-5" style="max-width:500px">
             <img class="mySlides" src="./images/image.png" style="width:100%">
             <img class="mySlides" src="./images/image (1).png" style="width:100%">
             <img class="mySlides" src="./images/image (2).png" style="width:100%">
             <img class="mySlides" src="./images/image (3).png" style="width:100%">
             <img class="mySlides" src="./images/image (4).png" style="width:100%">
         </div>
-
-        <!-- where the search results appear -->
-        <div class="searchResults">
-
-
+    </div>
+    <div class="container mt-5">
+        <h1>I want to visit a National Park in the State of - use state code:</h1>
+        <div class="columns">
+            <div class="column">
+                <input class="input" type="text" placeholder="Text input" id="given-input">
+            </div>
+            <div class="column">
+                <button class="button is-primary" id="SubmitBtn">Submit</button>
+            </div>
         </div>
+    </div>
+    <!-- where the search results appear -->
+    <div class="searchResults">
 
-        <!-- where the weather will appear -->
-        <div style="display: none">
 
-        </div>
+    </div>
 
-        <!-- Where the local storage will go for Your Recent Adventures -->
+    <!-- where the weather will appear -->
+    <div style="display: none">
+
+    </div>
+
+    <!-- Where the local storage will go for Your Recent Adventures -->
+    <div class="container">
         <div id="recent-adventures">
             <h2>Your Recent Adventures: </h2>
         </div>
-        <div id="park-lf">
-            <div class="column">
-                <div class="tile is-ancestor" id="parks">
-                    <article class="tile is-child box">
-                    </article>
-                </div>
+        <div class="container">
+            <div class="column mb-5" id="parks">
+
             </div>
         </div>
     </div>
