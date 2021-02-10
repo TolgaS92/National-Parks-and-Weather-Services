@@ -20,7 +20,7 @@ function carousel() {
   slideIndex++;
   if (slideIndex > x.length) { slideIndex = 1 }
   x[slideIndex - 1].style.display = "block";
-  setTimeout(carousel, 2000); // Change image every 2 seconds
+  setTimeout(carousel, 6000); // Change image every 2 seconds
 }
 
 $(document).foundation();
@@ -38,7 +38,7 @@ function trailFind() {
     }).then(function (data) {
       /* console.log(data);
       console.log(data.data); */
-
+      $("#parks").empty();
       for (let i = 0; i < data.data.length; i++) {
         /* console.log(data.data.length); */
         latitude = data.data[i].latitude;
@@ -50,14 +50,9 @@ function trailFind() {
         let response = data.data[i];
         /* console.log(response.fullName); */
         /* let card = document.getElementById("#") */
-        let parkTag = document.getElementById("#parks");
-        let divAnc = $("<div>").addClass("column is-4 tile is-ancestor");
-        let tile = $("<div>").addClass("tile");
-        let divParent = $("<div>").addClass("tile is-parent");
-        let article = $("<article>").addClass("tile is-child box");
-        let pTag = $("<p>").addClass("title").text(response.fullName);
-        let fig = $("<figure>").addClass("image is-4by3");
-        let imgSrc = $("<img>").attr("style", "width: 18rem");
+        let divCell = $("<div>").addClass("cell");
+        let card = $("<div>").addClass("card");
+        let imgSrc = $("<img>");
         //create a link that attaches to the picture of the park
         //this takes you to the weather
         //and park information which is function we haven't written yet
@@ -68,12 +63,13 @@ function trailFind() {
           //images.length
           //
         }
-        divAnc.append(tile);
-        tile.append(divParent);
-        divParent.append(article);
-        article.append(pTag, fig);
-        fig.append(imgSrc);
-        $("#parks").append(divAnc);
+        let divCardSection = $("<div>").addClass("card-section");
+        let pTag = $("<h4>").text(response.fullName);
+
+        divCell.append(card);
+        card.append(imgSrc, divCardSection);
+        divCardSection.append(pTag);
+        $("#parks").append(divCell);
 
         /* let divCardContent = $("<div>").addClass("card-content");
         let cardBodyDiv = $("<div>").addClass("card-body");

@@ -12,3 +12,13 @@ li a{
     height: 650px;
 }
 
+.grid-container {
+    margin-top: 20px;
+}
+
+#searchMat {
+    margin: 10px 25px;
+}
+#input-bar {
+    width: 250px;
+}
