@@ -22,3 +22,7 @@ li a{
 #input-bar {
     width: 250px;
 }
+
+.recent-adventures {
+    visibility: hidden;
+}
