@@ -23,12 +23,12 @@ li a{
     width: 250px;
 }
 .whole {
-    background-color:#1a2938;
+    background-color:#4391df;
     color: aliceblue;
     font-weight: 700;
     margin-top: 25px;
-    margin-right: 10px;
-    margin-left: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
     padding-right: 10px;
     text-align: center;
     border: 2px #343a40;
@@ -37,8 +37,8 @@ li a{
 }
 
 #fetch-weather {
-    margin-top: 25px;
-    margin-bottom: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     margin-left: 400px;
     display: none;
 }
