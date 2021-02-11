@@ -7,7 +7,7 @@
 //stored locally are 'Your recent adventures' which are the parks you looked at already
 //at the bottom of the page you will always see 'Your recent adventures' to help you plan your vacation, recents populates of the picture of that park you looked at
 
-//image carousel, not finished
+
 let slideIndex = 0;
 carousel();
 
@@ -53,9 +53,15 @@ function trailFind() {
         let divCell = $("<div>").addClass("cell");
         let card = $("<div>").addClass("card");
         let imgSrc = $("<img>");
-        //create a link that attaches to the picture of the park
-        //this takes you to the weather
-        //and park information which is function we haven't written yet
+        //put id tag that goes on the img so that when it calls park chosen you can pass the id of what clicked into the park chosen function (this is the park code)
+       //when I click on a park picture the park weather shows up   
+       $("img").click(function(){
+        parkChosen();
+        //weatherLatLon(longitude, latitude);
+        $(".recent-adventures").css("visibility", "visible");
+        //$(".recent-adventures").
+        
+      })
         if (response.images[0] && response.images[0].url) {
           imgSrc.attr("src", response.images[0].url);
           //how many images we have
@@ -78,7 +84,7 @@ function trailFind() {
 
 
 
-        weatherLatLon();
+        //weatherLatLon();
       }
     })
 }
@@ -95,20 +101,43 @@ $("#SubmitBtn").on("click", function () {
 //use .find in jQuery to grab lat and long 
 //get from park api 
 
-//wherever call function weatherLatLon need to put in arguments of latitude longitude 
-function weatherLatLon() {
-  const requestWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lon=" + longitude + "&lat=" + latitude + "&appid=ca7c03ab6ebfee5c7d96f4deeccbecc0";
-
+function weatherLatLon(longitude, latitude) {
+  let requestWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lon=" + longitude + "&lat=" + latitude + "&units=imperial&appid=ca7c03ab6ebfee5c7d96f4deeccbecc0";
+console.log(requestWeatherUrl);
   fetch(requestWeatherUrl)
     .then(function (data) {
       return data.json();
     }).then(function (data) {
-      console.log(data);
-    })
+      console.log(requestWeatherUrl);
+      $(".weather").append(function(){
+        //$("#five-days").empty();
+        //adds the five day weather to the page, but currently only shows the same day 5 times
+        for (let i = 0; i < 5; i += 5) {
+        
+          let days = data.list[i];
+          /* console.log(data.list[0].dt_txt); */
+          //let cards = document.getElementById("#fetch-five")
+          let cardInit = $("<div>").addClass("col-sm-2 whole");
+          let cardDay = $("<h2>").text(days.dt_txt.slice(0, 10));
+          /* console.log(data.list[0].main.temp + "˚F"); */
+          let degree = $("<p>").text(Math.round(days.main.temp) + "˚F");
+          /* console.log(data.list[0].main.humidity + " %"); */
+          let humid = $("<p>").text("Humidity: " + days.main.humidity + "%");
+          /* console.log(data.list[0].wind.speed + " mph"); */
+          let wind = $("<p>").text("wind Speed: " + Math.round(days.wind.speed) + " mph");
+          let icon = $("<img>");
+          icon.attr("src", "http://openweathermap.org/img/wn/" + days.weather[0].icon + "@2x.png");
+          $("#fetch-five").append(cardInit.append(cardDay, degree, icon, humid, wind));
+          $("#five-days").append(cards);
+      }
 
-  //call long and lat from nps object that is returned from fetch
-  //within that object we need to grab the lat and long individually and pass them into the variables of longitude and latitude
-  //
+      });
+    })
+  }
+
+  //funciton that figures out the park the user clicked on, insude this set variables for lat and lon, within the chosen park function then call the weather api
+function parkChosen(){
+  //let parkChosenApi = 
 }
 
 
