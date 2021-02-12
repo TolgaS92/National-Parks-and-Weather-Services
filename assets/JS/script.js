@@ -56,17 +56,21 @@ function trailFind() {
         /* console.log(response.fullName); */
         /* let card = document.getElementById("#") */
         let divCell = $("<div>").addClass("cell");
+        $(divCell).click(function () {
+          //when I click on a park image then the recent adventures div is visible
+          $(".recent-adventures").css("visibility", "visible");     
+        })
+        
         let card = $("<div>").addClass("card");
         let imgSrc = $("<img>");
         //put id tag that goes on the img so that when it calls park chosen you can pass the id of what clicked into the park chosen function (this is the park code)
-        //when I click on a park picture the park weather shows up   
-        $("img").click(function () {
-          parkChosen();
-          //weatherLatLon(longitude, latitude);
-          $(".recent-adventures").css("visibility", "visible");
-          //$(".recent-adventures").
-
-        })
+        
+        // $("img").click(function () {
+        //   //when I click on a park image then the recent adventures div is visible
+        //   $(".recent-adventures").css("visibility", "visible");
+        //   //when I click on a park imge then the image becomes a 
+         
+        // })
         if (response.images[0] && response.images[0].url) {
           imgSrc.attr("src", response.images[0].url);
           //how many images we have
@@ -144,4 +148,7 @@ function weatherLatLon() {
 
 
   //stored locally are 'Your recent adventures' which are the parks you looked at already
-  //at the bottom of the page you will always see 'Your recent adventures' to help you plan your vacation, recents populates of the picture of that park you looked at
+  //when I click on a park the park is saved to local storage and then added to the recent adventures div
+
+
+
