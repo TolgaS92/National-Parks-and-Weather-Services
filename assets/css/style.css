@@ -22,6 +22,26 @@ li a{
  #input-bar {
     width: 250px;
 }
+.whole {
+    background-color:#4391df;
+    color: aliceblue;
+    font-weight: 700;
+    margin-top: 25px;
+    margin-right: 20px;
+    margin-left: 20px;
+    padding-right: 10px;
+    text-align: center;
+    border: 2px #343a40;
+    border-radius: 25px;
+    width: 150px;
+}
+
+#fetch-weather {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 400px;
+    display: none;
+}
 
 div a{
     margin-left: 33px;
