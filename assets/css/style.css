@@ -6,8 +6,9 @@ li a{
 }
 
 .mySlides{
-    width: 100%;
+    width: 75%;
     height: 650px;
+    margin: 0 250px 0 250px;
 }
 
 .grid-container {
