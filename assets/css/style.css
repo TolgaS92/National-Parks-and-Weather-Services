@@ -46,3 +46,15 @@ li a{
 .recent-adventures {
     visibility: hidden;
 }
+
+
+.city-code {
+    cursor: pointer;
+    font-weight: bolder;
+    font-size: large;
+    margin-right: 50px;
+}
+
+.park-pointer {
+    cursor: pointer;
+}
