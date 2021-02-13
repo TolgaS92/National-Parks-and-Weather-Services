@@ -29,12 +29,14 @@ li a{
     margin-top: 25px;
     margin-right: 20px;
     margin-left: 20px;
+    margin-bottom: 50px;
     padding-right: 10px;
     text-align: center;
-    border: 2px #343a40;
+    border: 10px #0a0a0a;
     border-radius: 25px;
-    width: 150px;
+    width: 190px;
 }
+
 
 #fetch-weather {
     margin-top: 20px;
