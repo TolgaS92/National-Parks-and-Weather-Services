@@ -52,11 +52,11 @@ function trailFind() {
 
         /* console.log(data.data.length); */
         let response = data.data[i];
-        // let storePark = localStorage.setItem(`nationalName-${i}`, response.fullName); 
+        localStorage.setItem(`nationalName-${i}`, response.fullName); 
         /* console.log(response.fullName); */
         /* let card = document.getElementById("#") */
         let divCell = $("<div>").addClass("cell");
-        // let showPark = localStorage.getItem(`nationalName-${i}`, divCell)
+        let showPark = localStorage.getItem(`nationalName-${i}`, response.fullName)
         
         let card = $("<div>").addClass("card");
         let parkAppend = $("#park-append").append(card);
@@ -90,9 +90,9 @@ function trailFind() {
         $(divCell).click(function () {
           //when I click on a park image then the recent adventures div is visible
           $(".recent-adventures").css("visibility", "visible");
-          parkAppend.append(imgSrc, divCardSection);
-          divCardSection.append(pTag);
-          $().append(divCell);
+          parkAppend.append(showPark);
+          // divCardSection.append(pTag);
+          // $().append(divCell);
         })
       }
     })
