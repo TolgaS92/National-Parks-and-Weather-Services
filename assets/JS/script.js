@@ -28,6 +28,7 @@ $(document).foundation();
 let latitude;
 let longitude;
 let state;
+/* Getting the localstorage */
 let cityCodeSearched = JSON.parse(localStorage.getItem("city-code")) || [];
 //statecode function it calls the parks
 function trailFind() {
@@ -93,24 +94,29 @@ function trailFind() {
         let mediaClass = $("<div>").addClass("media");
         let mediaContent = $("<div>").addClass("media-content"); */
       }
+      weatherLatLon();
     })
 }
 
 
 $("#SubmitBtn").on("click", function (event) {
   event.preventDefault();
-  state = $("#given-input").val().trim();
+  state = $("#given-input").val().trim().toUpperCase();
   /* Adding the code that searched last into the searched list */
   if (!cityCodeSearched.includes(state)) {
+    /* pushes the statecode you searched */
     (cityCodeSearched).push(state);
   }
   /* deletes the state code more than 5 */
   if (cityCodeSearched.length > 3) {
+    /* pushes out the statecode you searched last more than 3 */
     cityCodeSearched.shift();
   }
   searchedStates()
   $("#fetch-weather").css('display', 'block');
   trailFind();
+
+  /* Local Storage Stores for Searched States */
   localStorage.setItem("city-code", JSON.stringify(cityCodeSearched));
   $("#given-input").val("");
 })
@@ -152,6 +158,7 @@ function weatherLatLon() {
     })
 }
 
+/* Seacrhed state code functıon appears ın the asıde )index.html */
 function searchedStates() {
   $("#searched").empty();
   for (let i = 0; i < cityCodeSearched.length; i++) {
@@ -165,11 +172,11 @@ function searchedStates() {
 }
 
 searchedStates();
+/* It makes the searched statecode as links */
 $(document).on("click", ".city-code", function () {
   state = $(this).text();
   $(state).on("click", trailFind)
   trailFind();
-  weatherLatLon();
 });
   //call long and lat from nps object that is returned from fetch
   //within that object we need to grab the lat and long individually and pass them into the variables of longitude and latitude
