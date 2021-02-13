@@ -28,6 +28,7 @@ $(document).foundation();
 let latitude;
 let longitude;
 let state;
+let cityCodeSearched = JSON.parse(localStorage.getItem("city-code")) || [];
 //statecode function it calls the parks
 function trailFind() {
   const requestUrl = "https://developer.nps.gov/api/v1/parks?stateCode=" + state + "&api_key=egaEomzHPAgI7vA1qMt3Hl0c3Po2WGueGNbdExWh";
@@ -81,7 +82,7 @@ function trailFind() {
           //
         }
         let divCardSection = $("<div>").addClass("card-section");
-        let pTag = $("<a>").text(response.fullName).attr("href", response.url);
+        let pTag = $("<a>").addClass("park-pointer").text(response.fullName).attr("href", response.url);
 
         divCell.append(card);
         card.append(imgSrc, divCardSection);
@@ -96,10 +97,22 @@ function trailFind() {
 }
 
 
-$("#SubmitBtn").on("click", function () {
+$("#SubmitBtn").on("click", function (event) {
+  event.preventDefault();
   state = $("#given-input").val().trim();
+  /* Adding the code that searched last into the searched list */
+  if (!cityCodeSearched.includes(state)) {
+    (cityCodeSearched).push(state);
+  }
+  /* deletes the state code more than 5 */
+  if (cityCodeSearched.length > 3) {
+    cityCodeSearched.shift();
+  }
+  searchedStates()
   $("#fetch-weather").css('display', 'block');
   trailFind();
+  localStorage.setItem("city-code", JSON.stringify(cityCodeSearched));
+  $("#given-input").val("");
 })
 
 
@@ -138,6 +151,26 @@ function weatherLatLon() {
 
     })
 }
+
+function searchedStates() {
+  $("#searched").empty();
+  for (let i = 0; i < cityCodeSearched.length; i++) {
+    let el = $("<p class='city-code'>").text("You have recently visited: ");
+    el.attr("data", cityCodeSearched[i]);
+    el.text(cityCodeSearched[i]);
+    $("#searched").append(el);
+
+  }
+
+}
+
+searchedStates();
+$(document).on("click", ".city-code", function () {
+  state = $(this).text();
+  $(state).on("click", trailFind)
+  trailFind();
+  weatherLatLon();
+});
   //call long and lat from nps object that is returned from fetch
   //within that object we need to grab the lat and long individually and pass them into the variables of longitude and latitude
   //
