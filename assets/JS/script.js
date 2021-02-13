@@ -83,7 +83,10 @@ function trailFind() {
           //
         }
         let divCardSection = $("<div>").addClass("card-section");
-        let pTag = $("<a>").addClass("park-pointer").text(response.fullName).attr("href", response.url);
+        let pTag = $("<a>").addClass("park-pointer").text(response.fullName).attr({
+          href: response.url,
+          target: '_blank'
+        });
 
         divCell.append(card);
         card.append(imgSrc, divCardSection);
