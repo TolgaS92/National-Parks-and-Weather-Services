@@ -1,5 +1,3 @@
-/*  keep it simple for now, follow wire frame
-*/
 
 li a{
     margin-top: 40px;
@@ -14,12 +12,12 @@ li a{
 
 .grid-container {
     margin-top: 20px;
-}
+} 
 
 #searchMat {
     margin: 10px 25px;
 }
-#input-bar {
+ #input-bar {
     width: 250px;
 }
 .whole {
@@ -64,7 +62,6 @@ li a{
 .city-code:hover{
     background-color: green;
 }
-
-.park-pointer {
-    cursor: pointer;
+.recent-adventures {
+    visibility: hidden;
 }
