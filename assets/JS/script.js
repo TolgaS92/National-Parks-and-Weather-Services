@@ -28,6 +28,8 @@ $(document).foundation();
 let latitude;
 let longitude;
 let state;
+/* Getting the localstorage */
+let cityCodeSearched = JSON.parse(localStorage.getItem("city-code")) || [];
 //statecode function it calls the parks
 function trailFind() {
   const requestUrl = "https://developer.nps.gov/api/v1/parks?stateCode=" + state + "&api_key=egaEomzHPAgI7vA1qMt3Hl0c3Po2WGueGNbdExWh";
@@ -60,22 +62,41 @@ function trailFind() {
           //images.length
         }
         let divCardSection = $("<div>").addClass("card-section");
-        let pTag = $("<a>").text(response.fullName);
+        let pTag = $("<a>").addClass("park-pointer").text(response.fullName).attr({
+          href: response.url,
+          target: '_blank'
+        });
 
         divCell.append(card);
         card.append(imgSrc, divCardSection);
         divCardSection.append(pTag);
-        $("#parks").append(divCell);
-      };
-    }
-  )
+        $("#parks").append(divCell);      
+      }
+      weatherLatLon();
+    })
 }
 
 
-$("#SubmitBtn").on("click", function () {
-  state = $("#given-input").val().trim();
+$("#SubmitBtn").on("click", function (event) {
+  event.preventDefault();
+  state = $("#given-input").val().trim().toUpperCase();
+  /* Adding the code that searched last into the searched list */
+  if (!cityCodeSearched.includes(state)) {
+    /* pushes the statecode you searched */
+    (cityCodeSearched).push(state);
+  }
+  /* deletes the state code more than 5 */
+  if (cityCodeSearched.length > 3) {
+    /* pushes out the statecode you searched last more than 3 */
+    cityCodeSearched.shift();
+  }
+  searchedStates()
   $("#fetch-weather").css('display', 'block');
   trailFind();
+
+  /* Local Storage Stores for Searched States */
+  localStorage.setItem("city-code", JSON.stringify(cityCodeSearched));
+  $("#given-input").val("");
 })
 
 
@@ -110,6 +131,27 @@ function weatherLatLon() {
 
     })
 }
+
+/* Seacrhed state code functıon appears ın the asıde )index.html */
+function searchedStates() {
+  $("#searched").empty();
+  for (let i = 0; i < cityCodeSearched.length; i++) {
+    let el = $("<p class='city-code'>").text("You have recently visited: ");
+    el.attr("data", cityCodeSearched[i]);
+    el.text(cityCodeSearched[i]);
+    $("#searched").append(el);
+
+  }
+
+}
+
+searchedStates();
+/* It makes the searched statecode as links */
+$(document).on("click", ".city-code", function () {
+  state = $(this).text();
+  $(state).on("click", trailFind)
+  trailFind();
+});
   //call long and lat from nps object that is returned from fetch
   //within that object we need to grab the lat and long individually and pass them into the variables of longitude and latitude
   //

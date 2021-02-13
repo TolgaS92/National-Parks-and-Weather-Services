@@ -1,10 +1,8 @@
-/*  keep it simple for now, follow wire frame
-*/
 
 li a{
-    margin-top: 30px;
+    margin-top: 40px;
     font-weight: bolder;
-    color: black;
+    color: #1779ba;
 }
 
 .mySlides{
@@ -23,18 +21,20 @@ li a{
     width: 250px;
 }
 .whole {
-    background-color:#4391df;
-    color: aliceblue;
+    background-color:#1779ba;
+    color: rgb(193, 216, 175);
     font-weight: 700;
     margin-top: 25px;
     margin-right: 20px;
     margin-left: 20px;
+    margin-bottom: 50px;
     padding-right: 10px;
     text-align: center;
-    border: 2px #343a40;
+    border: 10px #0a0a0a;
     border-radius: 25px;
-    width: 150px;
+    width: 190px;
 }
+
 
 #fetch-weather {
     margin-top: 20px;
@@ -43,9 +43,24 @@ li a{
     display: none;
 }
 
-div a{
-    margin-left: 33px;
+.recent-adventures {
+    visibility: block;
+}
 
+
+.city-code {
+    
+    text-align: center;
+    color: cornsilk;
+    cursor: pointer;
+    font-weight: bolder;
+    font-size: large;
+    margin-left: 100px;
+    width: 50px;
+    background-color: #1779ba;
+}
+.city-code:hover{
+    background-color: green;
 }
 .recent-adventures {
     visibility: hidden;
