@@ -20,7 +20,7 @@ function carousel() {
   slideIndex++;
   if (slideIndex > x.length) { slideIndex = 1 }
   x[slideIndex - 1].style.display = "block";
-  setTimeout(carousel, 6000); // Change image every 2 seconds
+  setTimeout(carousel, 6000); 
 }
 
 $(document).foundation();
@@ -36,45 +36,28 @@ function trailFind() {
     .then(function (data) {
       return data.json();
     }).then(function (data) {
-      /* console.log(data);
-      console.log(data.data); */
       $("#parks").empty();
       $("#fetch-weather").on("click", function () {
         weatherLatLon();
         $("#fetch-weather").css('display', 'none')
       })
       for (let i = 0; i < data.data.length; i++) {
-        /* console.log(data.data.length); */
         latitude = data.data[i].latitude;
         longitude = data.data[i].longitude;
-        /* console.log(latitude);
-        console.log(longitude); */
 
-        /* console.log(data.data.length); */
         let response = data.data[i];
         localStorage.setItem(`nationalName-${i}`, response.fullName); 
-        /* console.log(response.fullName); */
-        /* let card = document.getElementById("#") */
-        let divCell = $("<div>").addClass("cell");
-        let showPark = localStorage.getItem(`nationalName-${i}`, response.fullName)
-        
+        let divCell = $("<div>").addClass("cell");        
         let card = $("<div>").addClass("card");
-        let parkAppend = $("#park-append").append(card);
         let imgSrc = $("<img>");
         //put id tag that goes on the img so that when it calls park chosen you can pass the id of what clicked into the park chosen function (this is the park code)
         
-        // $("img").click(function () {
-        //   //when I click on a park image then the recent adventures div is visible
-        //   $(".recent-adventures").css("visibility", "visible");
-        //   //when I click on a park imge then the image becomes a 
          
-        // })
         if (response.images[0] && response.images[0].url) {
           imgSrc.attr("src", response.images[0].url);
           //how many images we have
           //math.floor.random
           //images.length
-          //
         }
         let divCardSection = $("<div>").addClass("card-section");
         let pTag = $("<a>").text(response.fullName);
@@ -83,19 +66,9 @@ function trailFind() {
         card.append(imgSrc, divCardSection);
         divCardSection.append(pTag);
         $("#parks").append(divCell);
-        /* let divCardContent = $("<div>").addClass("card-content");
-        let cardBodyDiv = $("<div>").addClass("card-body");
-        let mediaClass = $("<div>").addClass("media");
-        let mediaContent = $("<div>").addClass("media-content"); */
-        $(divCell).click(function () {
-          //when I click on a park image then the recent adventures div is visible
-          $(".recent-adventures").css("visibility", "visible");
-          parkAppend.append(showPark);
-          // divCardSection.append(pTag);
-          // $().append(divCell);
-        })
-      }
-    })
+      };
+    }
+  )
 }
 
 
@@ -124,15 +97,11 @@ function weatherLatLon() {
       $("#fetch-five").empty();
       for (let i = 0; i < 40; i += 8) {
         let days = data.list[i];
-        /* console.log(data.list[0].dt_txt); */
 
         let cardInit = $("<div>").addClass("whole");
         let cardDay = $("<div>").text(days.dt_txt.slice(0, 10));
-        /* console.log(data.list[0].main.temp + "˚F"); */
         let degree = $("<p>").text(Math.round(days.main.temp) + "˚F");
-        /* console.log(data.list[0].main.humidity + " %"); */
         let humid = $("<p>").text("Humidity: " + days.main.humidity + "%");
-        /* console.log(data.list[0].wind.speed + " mph"); */
         let wind = $("<p>").text("wind Speed: " + Math.round(days.wind.speed) + " mph");
         let icon = $("<img>");
         icon.attr("src", "http://openweathermap.org/img/wn/" + days.weather[0].icon + "@2x.png");
@@ -144,7 +113,6 @@ function weatherLatLon() {
   //call long and lat from nps object that is returned from fetch
   //within that object we need to grab the lat and long individually and pass them into the variables of longitude and latitude
   //
-/* localStorage.setItem("Weather-in-Park",) */
 
 
 
