@@ -36,8 +36,8 @@ function trailFind() {
     .then(function (data) {
       return data.json();
     }).then(function (data) {
-      /* console.log(data);
-      console.log(data.data); */
+      console.log(data);
+      console.log(data.data);
       $("#parks").empty();
       $("#fetch-weather").on("click", function () {
         weatherLatLon();
@@ -52,24 +52,26 @@ function trailFind() {
 
         /* console.log(data.data.length); */
         let response = data.data[i];
+        console.log(response.url);
+        /* let link = $("<a>").attr("href", response.url); */
         /* localStorage.setItem(`nationalName-${i}`, response.fullName); */
         /* console.log(response.fullName); */
         /* let card = document.getElementById("#") */
         let divCell = $("<div>").addClass("cell");
         $(divCell).click(function () {
           //when I click on a park image then the recent adventures div is visible
-          $(".recent-adventures").css("visibility", "visible");     
+          $(".recent-adventures").css("visibility", "visible");
         })
-        
+
         let card = $("<div>").addClass("card");
         let imgSrc = $("<img>");
         //put id tag that goes on the img so that when it calls park chosen you can pass the id of what clicked into the park chosen function (this is the park code)
-        
+
         // $("img").click(function () {
         //   //when I click on a park image then the recent adventures div is visible
         //   $(".recent-adventures").css("visibility", "visible");
         //   //when I click on a park imge then the image becomes a 
-         
+
         // })
         if (response.images[0] && response.images[0].url) {
           imgSrc.attr("src", response.images[0].url);
@@ -79,7 +81,7 @@ function trailFind() {
           //
         }
         let divCardSection = $("<div>").addClass("card-section");
-        let pTag = $("<a>").text(response.fullName);
+        let pTag = $("<a>").text(response.fullName).attr("href", response.url);
 
         divCell.append(card);
         card.append(imgSrc, divCardSection);
