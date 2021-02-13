@@ -23,10 +23,9 @@ We will need a results html to populate the results from the search
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-
 
 </head>
 
@@ -98,7 +97,7 @@ We will need a results html to populate the results from the search
                 <div class="row align-center">
                     <div class="columns">
                         <span>
-                            <p>I want to visit a National Park in the State of - use state code:
+                            <p>I want to visit a National Park in the State of - use state code:</p>
                         </span>
                     </div>
                     <div class="columns" id="input-bar">
@@ -122,22 +121,32 @@ We will need a results html to populate the results from the search
             </div>
 
             <!-- where the weather will appear -->
-            <div style="display: none">
+            <div class="weather">
+                <div class="col-sm-12" id="five-days">
+                    <div class="row" id="fetch-five">
+                        <!-- Five days forecast goes here -->
+                    </div>
+                </div>
 
             </div>
         </div>
     </div>
 
-    <!-- Where the local storage will go for Your Recent Adventures -->
     <div class="container">
-        <div id="recent-adventures">
-            <h2>Your Recent Adventures: </h2>
-        </div>
+        
         <div class="container">
             <div class="grid-container">
                 <div class="grid-x grid-margin-x small-up-2 medium-up-4" id="parks">
 
                 </div>
+            </div>
+        </div>
+
+        <!-- Where the local storage will go for Your Recent Adventures -->
+        <div>
+            <h2 class="recent-adventures">Your Recent Adventures: </h2>
+            <div class="recent-adventures">
+
             </div>
         </div>
     </div>

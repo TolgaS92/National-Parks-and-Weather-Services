@@ -25,4 +25,8 @@ li a{
 
 div a{
     margin-left: 33px;
+
+}
+.recent-adventures {
+    visibility: hidden;
 }
