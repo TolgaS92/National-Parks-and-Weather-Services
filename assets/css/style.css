@@ -1,6 +1,8 @@
 /*  keep it simple for now, follow wire frame
 */
-
+body{
+    background-color: rgb(250, 246, 229);
+}
 li a{
     margin-top: 40px;
     font-weight: bolder;
@@ -45,10 +47,18 @@ li a{
     display: none;
 }
 
-.recent-adventures {
-    visibility: block;
+#recent-adv {
+    display: none;
 }
-
+#searched{
+    display: none;
+}
+#given-input{
+    margin-left: 20px;
+}
+#SubmitBtn{
+    margin-left: 30px;
+}
 
 .city-code {
     
@@ -76,10 +86,14 @@ li a{
     text-align: center;
 }
 
-#parkName {
+#parkName{
+    width: 600px;
     text-align: center;
-    font-size: 42px;
+    font-size: 32px;
     font-weight: bolder;
+}
+#park-picture {
+    width: 600px;
 }
 #act-you-can{
     font-weight: 800;
@@ -95,4 +109,29 @@ li a{
 }
 #go-back-button{
     text-align: center;
+}
+@media screen and (max-width: 480px) {
+    #parkName{
+        width: 280px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bolder;
+    }
+    #park-picture {
+        width: 280px;
+  }
+    .whole {
+    background-color:#1779ba;
+    color: rgb(193, 216, 175);
+    font-weight: 700;
+    margin-top: 25px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 50px;
+    padding-right: 10px;
+    text-align: center;
+    border: 10px #0a0a0a;
+    border-radius: 25px;
+    width: 110px;
+    }
 }
