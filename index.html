@@ -44,49 +44,9 @@ We will need a results html to populate the results from the search
             </div>
         </div>
     </nav>
-
-    <!-- add in images -->
-    <!-- <div class="row">
-        <div class="columns">
-            <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-                <ul class="orbit-container">
-                    <button class="orbit-previous"><span class="show-for-sr">Previous
-                            Slide</span>&#9664;&#xFE0E;</button>
-                    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-                    <li class="is-active orbit-slide">
-                        <img class="orbit-image" src="./images/image.png" alt="Parks">
-                        <figcaption class="orbit-caption">Welcome to National Parks and Weather Service</figcaption>
-                    </li>
-                    <li class="orbit-slide">
-                        <img class="orbit-image" src="./images/image (1).png" alt="Parks">
-                        <figcaption class="orbit-caption"></figcaption>
-                    </li>
-                    <li class="orbit-slide">
-                        <img class="orbit-image" src="./images/image (2).png" alt="Parks">
-                        <figcaption class="orbit-caption"></figcaption>
-                    </li>
-                    <li class="orbit-slide">
-                        <img class="orbit-image" src="./images/image (3).png" alt="Parks">
-                        <figcaption class="orbit-caption"></figcaption>
-                    </li>
-                    <li class="orbit-slide">
-                        <img class="orbit-image" src="./images/image (4).png" alt="Parks">
-                        <figcaption class="orbit-caption"></figcaption>
-                    </li>
-                </ul>
-                <nav class="orbit-bullets">
-                    <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span
-                            class="show-for-sr">Current Slide</span></button>
-                    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-                    <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
-                    <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
-                </nav>
-            </div>
-        </div>
-    </div> -->
     <div class="container">
         <div class="row">
-            <div class="container w3-content w3-section mt-5 mb-5">
+            <div class="container w3-content w3-section mt-5 mb-5" id="slide-show">
                 <img class="mySlides" src="./images/image.png">
                 <img class="mySlides" src="./images/image (1).png">
                 <img class="mySlides" src="./images/image (2).png">
@@ -95,27 +55,41 @@ We will need a results html to populate the results from the search
             </div>
 
             <div class="container" id="searchMat">
-                <div class="row align-center">
-                    <div class="columns">
-                        <span>
-                            <p>I want to visit a National Park in the State of - use state code:
-                        </span>
+                <div class="row">
+                    <div class="grid-container mb-5 mt-5">
+                        <div class="grid-x grid-margin-x small-up-2 medium-up-3">
+                            <div class="columns">
+                                <span>
+                                    <h4>I want to visit a National Park in the State of (e.g./Az,Co,Fl) use state code:
+                                    </h4>
+                                </span>
+                            </div>
+                            <div class="columns" id="input-bar">
+                                <span><input class="input" type="text" placeholder="Text input" id="given-input">
+                                </span>
+                            </div>
+                            <div class="columns m-2">
+                                <span><button class="button is-primary" id="SubmitBtn">Submit</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="grid-container mb-5 mt-5">
+                            <div class="grid-x grid-margin-x small-up-2 medium-up-3">
+                                <div class="columns" id="recent-adv">
+                                    <h4 class="recent-adventures">Your Recent Adventures: </h4>
+                                </div>
+                                <div class="columns">
+                                    <aside class="columns" id="searched">
+                                        <!-- City searched goes here -->
+                                    </aside>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="columns" id="input-bar">
-                        <span><input class="input" type="text" placeholder="Text input" id="given-input">
-                        </span>
-                    </div>
-                    <div class="columns">
-                        <span><button class="button is-primary" id="SubmitBtn">Submit</button>
-                        </span>
-                    </div>
-                    <h4 class="recent-adventures">Your Recent Adventures: </h4>
-                    <aside class="columns" id="searched">
-                        <!-- City searched goes here -->
-                    </aside>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <div class="container">
@@ -126,12 +100,28 @@ We will need a results html to populate the results from the search
         </div>
     </div>
     <!-- Information about the place the user clicked -->
-    <div class="container" id="searchResults">
+    <div class="container mt-5" id="searchResults">
         <div class="row">
-            <div class="columns">
-                <div class="park-Name" id="parkName">
+            <div class="grid-container mb-5 mt-3">
+                <div class="columns">
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-6 medium-4">
+                            <p class="park-Name" id="parkName">
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-6 medium-4">
+                            <div id="park-picture">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <hr>
             <div class="columns">
                 <span class="activity-tx">Activities you can do:</span>
                 <div class="grid-container mb-5 mt-5">
@@ -142,6 +132,7 @@ We will need a results html to populate the results from the search
                     </div>
                 </div>
             </div>
+            <hr>
             <div class="columns">
                 <span class="activity-tx">Operating Hours:</span>
                 <div class="grid-container mb-5 mt-5">
@@ -152,6 +143,7 @@ We will need a results html to populate the results from the search
                     </div>
                 </div>
             </div>
+            <hr>
             <div class="columns">
                 <span class="activity-tx">Entrance Fees:</span>
                 <div class="grid-container mb-5 mt-5">
@@ -162,7 +154,7 @@ We will need a results html to populate the results from the search
                     </div>
                 </div>
             </div>
-            <!-- where the search results appear -->
+            <hr>
             <div class="columns">
                 <span class="activity-tx">Weather Forecast for 5 days:</span>
                 <div class="grid-container mb-5 mt-5">

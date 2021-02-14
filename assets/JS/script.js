@@ -9,6 +9,7 @@
 function render() {
   $("#searchResults").hide();
 
+
   let slideIndex = 0;
   carousel();
 
@@ -28,7 +29,7 @@ function render() {
   /* let latitude;
   let longitude; */
   let state;
-  /* let parkPicked = ""; */
+  let parkPicked = "";
   /*let lat;
   var lon; */
   /* Getting the localstorage */
@@ -80,10 +81,9 @@ function render() {
           // })
           if (response.images[0] && response.images[0].url) {
             imgSrc.attr("src", response.images[0].url)
-            //how many images we have
-            //math.floor.random
-            //images.length
-            //
+          }
+          if (!response.images[0]) {
+            imgSrc.attr("src", "./images/img_34.png")
           }
           let divCardSection = $("<div>").addClass("card-section");
           let pTag = $("<a>").addClass("park-pointer").text(response.fullName).attr({
@@ -105,22 +105,27 @@ function render() {
 
   $("#SubmitBtn").on("click", function (event) {
     event.preventDefault();
+    $("#recent-adv").css("display", "block");
+    $("#searched").css("display", "block");
+    $("#slide-show").hide();
+    $("#search-bar").hide();
     $("#parks").empty();
     $("#searchResults").hide();
+    $("#parks").show();
     state = $("#given-input").val().trim().toUpperCase();
     /* Adding the code that searched last into the searched list */
     if (!cityCodeSearched.includes(state)) {
       /* pushes the statecode you searched */
       (cityCodeSearched).push(state);
     }
-    /* deletes the state code more than 5 */
-    if (cityCodeSearched.length > 3) {
+    /* deletes the state code more than 4 */
+    if (cityCodeSearched.length > 4) {
       /* pushes out the statecode you searched last more than 3 */
       cityCodeSearched.shift();
     }
+
     searchedStates()
     trailFind();
-
     /* Local Storage Stores for Searched States */
     localStorage.setItem("city-code", JSON.stringify(cityCodeSearched));
     $("#given-input").val("");
@@ -142,7 +147,6 @@ function render() {
         return response.json();
       }).then(function (response) {
         console.log(response);
-        $("#fetch-five").empty();
         for (let i = 0; i < 40; i += 8) {
           let days = response.list[i];
           /* console.log(response.list[0].dt_txt); */
@@ -173,18 +177,35 @@ function render() {
         console.log(response.data[0].activities);
         console.log(response.data[0].fullName); */
         for (i = 0; i < response.data.length; i++) {
-          console.log(response.data[i].entranceFees[i].cost);
+          /* console.log(response.data[i].entranceFees[i].cost); */
           let pickedParkName = $("<p>").text(response.data[i].fullName);
           $("#parkName").append(pickedParkName);
+          let imageOfPark = $("<img>");
+          console.log(response.data[i].images[i]);
+          if (response.data[i].images.length === 0
+            /* response.data[i].images && response.data[i].images[0] */) {
+            imageOfPark.attr("src", "./images/img_34.png")
+            /* imageOfPark.attr("src", response.data[i].images[0].url) */
+          }
+          /* if */ else/* (!response.data[i].images) */ {
+            imageOfPark.attr("src", response.data[i].images[0].url);
+          }
+          $("#park-picture").append(imageOfPark);
           let operatingHours = $("<p>").text(response.data[i].operatingHours[i].description);
           $("#operating-hours").append(operatingHours);
-          let entFee = $("<p>").text("$ " + response.data[i].entranceFees[i].cost);
+          let entFee = $("<p>");
+          if (response.data[i].entranceFees[i].cost.length === 0) {
+            entFee.text("There is No Fee information found")
+          } else {
+            entFee.text("$ " + response.data[i].entranceFees[i].cost);
+          }
           $("#entrance-fee").append(entFee);
           let thingsToDo = response.data[i].activities;
           for (a = 0; a < thingsToDo.length; a++) {
             let activitiesLi = $("<li>").addClass("act-list").text(thingsToDo[a].name);
             $("#act-you-can").append(activitiesLi);
           }
+          $("#searchMat").css("display", "none");
         }
       })
   }
@@ -197,7 +218,6 @@ function render() {
       el.attr("data", cityCodeSearched[i]);
       el.text(cityCodeSearched[i]);
       $("#searched").append(el);
-
     }
 
   }
@@ -209,6 +229,7 @@ function render() {
     $("#searchResults").hide();
     $("#parks").empty();
     $("#parkName").empty();
+    $("#park-picture").empty();
     $("#act-you-can").empty();
     $("#operating-hours").empty();
     $("#entrance-fee").empty();
@@ -220,6 +241,7 @@ function render() {
 
 
   $(document).on("click", ".image-Park", function () {
+    $("#slide-show").hide();
     $("#parks").hide();
     $("#searchResults").show();
     let parkLatitude = $(this).data("lati");
@@ -234,10 +256,12 @@ function render() {
     $("#searchResults").hide();
     $("#parks").show();
     $("#parkName").empty();
+    $("#park-picture").empty();
     $("#act-you-can").empty();
     $("#operating-hours").empty();
     $("#entrance-fee").empty();
     $("#weather-for-park").empty();
+    $("#searchMat").css("display", "block");
   })
   //call long and lat from nps object that is returned from fetch
   //within that object we need to grab the lat and long individually and pass them into the variables of longitude and latitude
