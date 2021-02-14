@@ -24,13 +24,12 @@ function render() {
     setTimeout(carousel, 6000); // Change image every 2 seconds
   }
 
-  $(document).foundation();
 
   /* let latitude;
   let longitude; */
   let state;
-  /* let parkPicked;
-  let lat;
+  /* let parkPicked = ""; */
+  /*let lat;
   var lon; */
   /* Getting the localstorage */
   let cityCodeSearched = JSON.parse(localStorage.getItem("city-code")) || [];
@@ -187,7 +186,6 @@ function render() {
             $("#act-you-can").append(activitiesLi);
           }
         }
-
       })
   }
 
@@ -210,6 +208,7 @@ function render() {
     state = $(this).text();
     $("#searchResults").hide();
     $("#parks").empty();
+    $("#parks").show();
     $(state).on("click", trailFind);
     trailFind();
   });
