@@ -208,6 +208,11 @@ function render() {
     state = $(this).text();
     $("#searchResults").hide();
     $("#parks").empty();
+    $("#parkName").empty();
+    $("#act-you-can").empty();
+    $("#operating-hours").empty();
+    $("#entrance-fee").empty();
+    $("#weather-for-park").empty();
     $("#parks").show();
     $(state).on("click", trailFind);
     trailFind();
