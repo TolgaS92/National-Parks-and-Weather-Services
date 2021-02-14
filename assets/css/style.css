@@ -2,7 +2,7 @@
 body{
     background-color: rgb(250, 246, 229);
 }
-li a{
+.page-link{
     margin-top: 40px;
     font-weight: bolder;
     color: #1779ba;
@@ -57,6 +57,10 @@ li a{
 }
 #SubmitBtn{
     margin-left: 30px;
+}
+.search-box-exp {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .city-code {
