@@ -63,6 +63,3 @@ li a{
 .city-code:hover{
     background-color: green;
 }
-.recent-adventures {
-    visibility: hidden;
-}

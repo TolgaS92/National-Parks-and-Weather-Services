@@ -87,27 +87,66 @@ We will need a results html to populate the results from the search
     </div>
 
     <div class="container">
-        <div class="row">
-            <div class="searchResults">
-                <!-- where the search results appear -->
-
-            </div>
-
-            <!-- where the weather will appear -->
-        </div>
-    </div>
-
-
-    </div>
-    <div class="grid-container mb-5 mt-5">
-        <div class="grid-x grid-margin-x small-up-2 medium-up-3" id="fetch-five">
-            <!-- Weather Dashboard Goes here -->
-        </div>
-    </div>
-    <div class="container">
         <div class="grid-container">
             <div class="grid-x grid-margin-x small-up-2 medium-up-4" id="parks">
                 <!-- Parks Go here -->
+            </div>
+        </div>
+    </div>
+    <!-- Information about the place the user clicked -->
+    <div class="container" id="searchResults">
+        <div class="row">
+            <div class="columns">
+                <div class="park-Name" id="parkName">
+                </div>
+            </div>
+            <div class="columns">
+                <span class="activity-tx">Activities you can do:</span>
+                <div class="grid-container mb-5 mt-5">
+                    <div class="grid-x grid-margin-x small-up-2 medium-up-3">
+                        <ol id="act-you-can">
+                            <!-- Activities goes here -->
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="columns">
+                <span class="activity-tx">Operating Hours:</span>
+                <div class="grid-container mb-5 mt-5">
+                    <div class="grid-x grid-margin-x small-up-2 medium-up-3">
+                        <div id="operating-hours">
+                            <!-- Operation hours -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="columns">
+                <span class="activity-tx">Entrance Fees:</span>
+                <div class="grid-container mb-5 mt-5">
+                    <div class="grid-x grid-margin-x small-up-2 medium-up-3">
+                        <div id="entrance-fee">
+                            <!-- Entrance Fees -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- where the search results appear -->
+            <div class="columns">
+                <span class="activity-tx">Weather Forecast for 5 days:</span>
+                <div class="grid-container mb-5 mt-5">
+                    <div class="grid-x grid-margin-x small-up-2 medium-up-3" id="weather-for-park">
+                        <!-- Weather Dashboard Goes here -->
+                    </div>
+                </div>
+            </div>
+            <div class="columns mt-5">
+                <div class="grid-container mb-5 mt-5">
+                    <div class="grid-x grid-margin-x small-up-1 medium-up-1">
+                        <button type="button" class="alert button" id="go-back-button">
+                            Go Back To Parks
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
