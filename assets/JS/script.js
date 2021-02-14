@@ -22,8 +22,86 @@ function render() {
     if (slideIndex > x.length) { slideIndex = 1 }
     x[slideIndex - 1].style.display = "block";
     setTimeout(carousel, 6000); // Change image every 2 seconds
-
   }
+
+  $(document).foundation();
+
+  /* let latitude;
+  let longitude; */
+  let state;
+  /* let parkPicked;
+  let lat;
+  var lon; */
+  /* Getting the localstorage */
+  let cityCodeSearched = JSON.parse(localStorage.getItem("city-code")) || [];
+  //statecode function it calls the parks
+  function trailFind() {
+    const requestUrl = "https://developer.nps.gov/api/v1/parks?stateCode=" + state + "&api_key=egaEomzHPAgI7vA1qMt3Hl0c3Po2WGueGNbdExWh";
+
+    fetch(requestUrl)
+      .then(function (data) {
+        return data.json();
+      }).then(function (data) {
+        console.log(data);
+        console.log(data.data);
+        for (let i = 0; i < data.data.length; i++) {
+          /* console.log(data.data.length); */
+
+          /* console.log(latitude);
+          console.log(longitude); */
+
+          /* console.log(data.data.length); */
+          let response = data.data[i];
+          latitude = response.latitude;
+          longitude = response.longitude;
+          let imgParkCode = response.parkCode
+          /* console.log(response.url); */
+          /* let link = $("<a>").attr("href", response.url); */
+          /* localStorage.setItem(`nationalName-${i}`, response.fullName); */
+          /* console.log(response.fullName); */
+          /* let card = document.getElementById("#") */
+          let divCell = $("<div>").addClass("cell");
+          $(divCell).click(function () {
+            //when I click on a park image then the recent adventures div is visible
+            $(".recent-adventures").css("visibility", "visible");
+          })
+
+          let card = $("<div>").addClass("card");
+          let imgSrc = $(`<img data-park="${imgParkCode}">`).addClass("image-Park").attr({
+            "data-lati": latitude,
+            "data-long": longitude
+          });
+          //put id tag that goes on the img so that when it calls park chosen you can pass the id of what clicked into the park chosen function (this is the park code)
+
+          // $("img").click(function () {
+          //   //when I click on a park image then the recent adventures div is visible
+          //   $(".recent-adventures").css("visibility", "visible");
+          //   //when I click on a park imge then the image becomes a 
+
+          // })
+          if (response.images[0] && response.images[0].url) {
+            imgSrc.attr("src", response.images[0].url)
+            //how many images we have
+            //math.floor.random
+            //images.length
+            //
+          }
+          let divCardSection = $("<div>").addClass("card-section");
+          let pTag = $("<a>").addClass("park-pointer").text(response.fullName).attr({
+            href: response.url,
+            target: '_blank'
+          });
+
+          divCell.append(card);
+          card.append(imgSrc, divCardSection);
+          divCardSection.append(pTag);
+          $("#parks").append(divCell);
+          /* let divCardContent = $("<div>").addClass("card-content");
+          let cardBodyDiv = $("<div>").addClass("card-body");
+          let mediaClass = $("<div>").addClass("media");
+          let mediaContent = $("<div>").addClass("media-content"); */
+        }
+      })
   }
 
   $("#SubmitBtn").on("click", function (event) {
@@ -112,7 +190,15 @@ function render() {
 
       })
   }
-      
+
+  /* Seacrhed state code functıon appears ın the asıde )index.html */
+  function searchedStates() {
+    $("#searched").empty();
+    for (let i = 0; i < cityCodeSearched.length; i++) {
+      let el = $("<p class='city-code'>").text("You have recently visited: ");
+      el.attr("data", cityCodeSearched[i]);
+      el.text(cityCodeSearched[i]);
+      $("#searched").append(el);
 
     }
 
@@ -152,7 +238,7 @@ function render() {
   //call long and lat from nps object that is returned from fetch
   //within that object we need to grab the lat and long individually and pass them into the variables of longitude and latitude
   //
-
+  /* localStorage.setItem("Weather-in-Park",) */
 
 
 
