@@ -1,5 +1,3 @@
-/*  keep it simple for now, follow wire frame
-*/
 
 li a{
     margin-top: 40px;
@@ -8,18 +6,19 @@ li a{
 }
 
 .mySlides{
-    width: 100%;
+    width: 75%;
     height: 650px;
+    margin: 0 250px 0 250px;
 }
 
 .grid-container {
     margin-top: 20px;
-}
+} 
 
 #searchMat {
     margin: 10px 25px;
 }
-#input-bar {
+ #input-bar {
     width: 250px;
 }
 .whole {
@@ -63,36 +62,4 @@ li a{
 }
 .city-code:hover{
     background-color: green;
-}
-
-.park-pointer {
-    cursor: pointer;
-}
-
-.activity-tx {
-    color: rgb(117, 13, 27);
-    font-size: 24px;
-    font-weight: bolder;
-    text-align: center;
-}
-
-#parkName {
-    text-align: center;
-    font-size: 42px;
-    font-weight: bolder;
-}
-#act-you-can{
-    font-weight: 800;
-}
-.act-list{
-    font-weight: 800;
-}
-#operating-hours {
-    font-weight: 700;
-}
-#entrance-fee{
-    font-weight: 700;
-}
-#go-back-button{
-    text-align: center;
 }
