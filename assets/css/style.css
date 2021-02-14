@@ -68,3 +68,31 @@ li a{
 .park-pointer {
     cursor: pointer;
 }
+
+.activity-tx {
+    color: rgb(117, 13, 27);
+    font-size: 24px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+#parkName {
+    text-align: center;
+    font-size: 42px;
+    font-weight: bolder;
+}
+#act-you-can{
+    font-weight: 800;
+}
+.act-list{
+    font-weight: 800;
+}
+#operating-hours {
+    font-weight: 700;
+}
+#entrance-fee{
+    font-weight: 700;
+}
+#go-back-button{
+    text-align: center;
+}
