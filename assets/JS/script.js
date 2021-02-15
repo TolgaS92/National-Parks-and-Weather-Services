@@ -7,7 +7,7 @@
 //stored locally are 'Your recent adventures' which are the parks you looked at already
 //at the bottom of the page you will always see 'Your recent adventures' to help you plan your vacation, recents populates of the picture of that park you looked at
 
-
+/* Function below cycles through homepage photos */
 let slideIndex = 0;
 carousel();
 
@@ -24,7 +24,7 @@ function carousel() {
 }
 
 $(document).foundation();
-
+// Global variables
 let latitude;
 let longitude;
 let state;
@@ -33,7 +33,7 @@ let cityCodeSearched = JSON.parse(localStorage.getItem("city-code")) || [];
 //statecode function it calls the parks
 function trailFind() {
   const requestUrl = "https://developer.nps.gov/api/v1/parks?stateCode=" + state + "&api_key=egaEomzHPAgI7vA1qMt3Hl0c3Po2WGueGNbdExWh";
-
+  /* Getting latitude and longitude for use in the weather api */
   fetch(requestUrl)
     .then(function (data) {
       return data.json();
@@ -66,7 +66,7 @@ function trailFind() {
           href: response.url,
           target: '_blank'
         });
-
+        /* Appending search results to the page */
         divCell.append(card);
         card.append(imgSrc, divCardSection);
         divCardSection.append(pTag);
@@ -99,14 +99,7 @@ $("#SubmitBtn").on("click", function (event) {
   $("#given-input").val("");
 })
 
-
-
-//weather api
-//we need the weather api to find the location of the chosen park and populate that data into the weatherBox on the html... somehow mapquest helps with this
-//use .find in jQuery to grab lat and long 
-//get from park api 
-
-//wherever call function weatherLatLon need to put in arguments of latitude longitude 
+/*Getting weather with the longitude and latitude obtained from the parks api */
 function weatherLatLon() {
   const requestWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lon=" + longitude + "&lat=" + latitude + "&units=imperial&appid=ca7c03ab6ebfee5c7d96f4deeccbecc0";
 
@@ -152,18 +145,4 @@ $(document).on("click", ".city-code", function () {
   $(state).on("click", trailFind)
   trailFind();
 });
-  //call long and lat from nps object that is returned from fetch
-  //within that object we need to grab the lat and long individually and pass them into the variables of longitude and latitude
-  //
-
-
-
-  //we need the weather api to find the location of the chosen park and populate that data into the weatherBox on the html... somehow mapquest helps with this
-
-
-
   //stored locally are 'Your recent adventures' which are the parks you looked at already
-  //when I click on a park the park is saved to local storage and then added to the recent adventures div
-
-
-
