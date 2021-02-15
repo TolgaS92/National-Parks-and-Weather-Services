@@ -9,7 +9,7 @@
 function render() {
   $("#searchResults").hide();
 
-
+/* Function to cycle through the images on the homepage */
   let slideIndex = 0;
   carousel();
 
@@ -25,7 +25,7 @@ function render() {
     setTimeout(carousel, 2000); // Change image every 2 seconds
   }
 
-
+/* Setting global variables */
   let state;
   let parkPicked = "";
   /* Getting the localstorage */
@@ -103,6 +103,7 @@ function render() {
     localStorage.setItem("city-code", JSON.stringify(cityCodeSearched));
     $("#given-input").val("");
   })
+  /* Getting weather with the latitude and longitude from the park api */
   function weatherLatLon(parkLongtitude, parkLatitude) {
     let requestWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + parkLatitude + "&lon=" + parkLongtitude + "&units=imperial&appid=ca7c03ab6ebfee5c7d96f4deeccbecc0";
 
