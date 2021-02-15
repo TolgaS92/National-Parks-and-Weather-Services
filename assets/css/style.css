@@ -1,5 +1,8 @@
 
-li a{
+body{
+    background-color: rgb(250, 246, 229);
+}
+.page-link{
     margin-top: 40px;
     font-weight: bolder;
     color: #1779ba;
@@ -13,12 +16,17 @@ li a{
 
 .grid-container {
     margin-top: 20px;
-} 
+}
+
+.card {
+    background-color: rgb(238, 234, 234);
+    cursor: pointer;
+}
 
 #searchMat {
     margin: 10px 25px;
 }
- #input-bar {
+#input-bar {
     width: 250px;
 }
 .whole {
@@ -44,10 +52,22 @@ li a{
     display: none;
 }
 
-.recent-adventures {
-    visibility: block;
+#recent-adv {
+    display: none;
 }
-
+#searched{
+    display: none;
+}
+#given-input{
+    margin-left: 20px;
+}
+#SubmitBtn{
+    margin-left: 30px;
+}
+.search-box-exp {
+    font-size: 20px;
+    font-weight: bold;
+}
 
 .city-code {
     
@@ -63,6 +83,65 @@ li a{
 .city-code:hover{
     background-color: green;
 }
-.recent-adventures {
-    visibility: hidden;
+
+.park-pointer {
+    cursor: pointer;
 }
+
+.activity-tx {
+    color: rgb(117, 13, 27);
+    font-size: 24px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+#parkName{
+    width: 600px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bolder;
+}
+#park-picture {
+    width: 600px;
+}
+#act-you-can{
+    font-weight: 800;
+}
+.act-list{
+    font-weight: 800;
+}
+#operating-hours {
+    font-weight: 700;
+}
+#entrance-fee{
+    font-weight: 700;
+}
+#go-back-button{
+    text-align: center;
+}
+@media screen and (max-width: 480px) {
+    #parkName{
+        width: 280px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bolder;
+    }
+    #park-picture {
+        width: 280px;
+  }
+    .whole {
+    background-color:#1779ba;
+    color: rgb(193, 216, 175);
+    font-weight: 700;
+    margin-top: 25px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 50px;
+    padding-right: 10px;
+    text-align: center;
+    border: 10px #0a0a0a;
+    border-radius: 25px;
+    width: 110px;
+    }
+}
+

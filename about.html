@@ -1,22 +1,3 @@
-<!-- index homepage
-about page
-
-homepage:
-nav bar that has links to home, about pages, with a logo? NPS logo or create our own? Park and Rec?
-landing page: photo carosel of national parks and search bar for location, find a park with drop down menu by state
-task: wire frame landing page
-
-
-when i search for a location, a picture of that park shows up on the left, a link to the park site, and the weather shows up on the right
-
-about page: same nav bar as homepage
-six cards for links to fun articles, one will be About the site and team
-
-link js, about, bulma or another site
-
-We will need a results html to populate the results from the search, may not need this but keeping it anyway
--->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,8 +6,7 @@ We will need a results html to populate the results from the search, may not nee
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-
-
+    <title>National Parks and Weather Service</title>
 </head>
 
 <!-- Navigation bar with links to index and about page -->
@@ -35,11 +15,13 @@ We will need a results html to populate the results from the search, may not nee
         <div class="top-bar">
             <div class="top-bar-left">
                 <ul class="dropdown menu" data-dropdown-menu>
-                    <div class="logo">
-                        <a href="index.html"><img src="images/NPWS_logo.png" width="100" height="100"></a>
-                    </div>
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="./about.html">About</a></li>
+                    <li class="logo">
+                        <a href="index.html">
+                            <img src="images/NPWS_logo.png" width="100" height="100" alt="logoofthepage">
+                        </a>
+                    </li>
+                    <li class="page-link"><a href="./index.html">Home</a></li>
+                    <li class="page-link"><a href="./about.html">About</a></li>
                 </ul>
             </div>
         </div>
@@ -91,20 +73,23 @@ We will need a results html to populate the results from the search, may not nee
             <!-- About Us -->
             <div class="cell">
                 <div class="card">
-                    <a href=>
-                        <img src="images/nate-pic.jpg" style="margin-left: 8px; margin-bottom: 5px;"alt="Placeholder image">
-                        <img src="images/morgan-profile.jpeg" style="margin-bottom: 5px; margin-left: 10px;" alt="Placeholder image">
-                        <img src="images/me2.0.jpg" style="margin-bottom: 5px; margin-left: 15px;" alt="Placeholder image">
-                        <img src="images/tolga-pic.jpg" style="margin-left: 15px;margin-top: 5px;" alt="Placeholder image">
+                    <a>
+                        <img src="images/nate-pic.jpg" style="margin-top: 5px; margin-left: 40px;"
+                            alt="Placeholder image">
+                        <img src="images/morgan-profile.jpeg" style="margin-top: 5px; margin-right: 28px; float: right;"
+                            alt="Placeholder image">
+                        <img src="images/me2.0.jpg" style="margin-top: 5px; margin-left: 40px;" alt="Placeholder image">
+                        <img src="images/tolga-pic.jpg" style="margin-top: 5px; margin-right: 37px; float: right;"
+                            alt="Placeholder image">
                     </a>
                     <div class="card-section">
-                        <p>Get to know te developers! We think were pretty cool...</p>
+                        <p>Get to know the developers! We think were pretty cool...</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <script src="assets/JS/script.js"></script>
 </body>
 
