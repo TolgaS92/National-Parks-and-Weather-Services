@@ -17,6 +17,11 @@ body{
     margin-top: 20px;
 }
 
+.card {
+    background-color: rgb(238, 234, 234);
+    cursor: pointer;
+}
+
 #searchMat {
     margin: 10px 25px;
 }
