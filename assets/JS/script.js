@@ -22,7 +22,7 @@ function render() {
     slideIndex++;
     if (slideIndex > x.length) { slideIndex = 1 }
     x[slideIndex - 1].style.display = "block";
-    setTimeout(carousel, 6000); // Change image every 2 seconds
+    setTimeout(carousel, 2000); // Change image every 2 seconds
   }
 
 
@@ -60,6 +60,7 @@ function render() {
           if (!response.images[0]) {
             imgSrc.attr("src", "./images/img_34.png")
           }
+          let span = $("<span>").text("Click on image for details>>>");
           let divCardSection = $("<div>").addClass("card-section");
           let pTag = $("<a>").addClass("park-pointer").text(response.fullName).attr({
             href: response.url,
@@ -67,12 +68,13 @@ function render() {
           });
 
           divCell.append(card);
-          card.append(imgSrc, divCardSection);
+          card.append(span, imgSrc, divCardSection);
           divCardSection.append(pTag);
           $("#parks").append(divCell);
         }
       })
   }
+
 
   $("#SubmitBtn").on("click", function (event) {
     event.preventDefault();
@@ -137,7 +139,7 @@ function render() {
           ) {
             imageOfPark.attr("src", "./images/img_34.png")
           }
-          else{
+          else {
             imageOfPark.attr("src", response.data[i].images[0].url);
           }
           $("#park-picture").append(imageOfPark);
