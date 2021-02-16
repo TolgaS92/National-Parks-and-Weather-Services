@@ -1,34 +1,37 @@
-
+/* Background color for main pages */
 body{
     background-color: rgb(250, 246, 229);
 }
+/* Change color of the link */
 .page-link{
     margin-top: 40px;
     font-weight: bolder;
     color: #1779ba;
 }
-
+/* carosel for images */
 .mySlides{
     width: 75%;
     height: 650px;
     margin: 0 250px 0 250px;
 }
-
+/* adjusting the grid */
 .grid-container {
     margin-top: 20px;
 }
-
+/* Background for the cards */
 .card {
     background-color: rgb(238, 234, 234);
     cursor: pointer;
 }
-
+/* stying for searchbox */
 #searchMat {
     margin: 10px 25px;
 }
+/* adjusted width of textarea */
 #input-bar {
     width: 250px;
 }
+/**/
 .whole {
     background-color:#1779ba;
     color: rgb(193, 216, 175);
@@ -44,7 +47,7 @@ body{
     width: 190px;
 }
 
-
+/* styling for weather cards */
 #fetch-weather {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -68,7 +71,7 @@ body{
     font-size: 20px;
     font-weight: bold;
 }
-
+/* changing text and background color for recent searches */
 .city-code {
     
     text-align: center;
@@ -80,42 +83,49 @@ body{
     width: 50px;
     background-color: #1779ba;
 }
+/* change color on hover */
 .city-code:hover{
     background-color: green;
 }
-
+/* change pointer on hover over parks */
 .park-pointer {
     cursor: pointer;
 }
-
+/* text adjustments on results page */
 .activity-tx {
     color: rgb(117, 13, 27);
     font-size: 24px;
     font-weight: bolder;
     text-align: center;
 }
-
+/* centers park name */
 #parkName{
     width: 600px;
     text-align: center;
     font-size: 32px;
     font-weight: bolder;
 }
+/* picture size adjustment */
 #park-picture {
     width: 600px;
 }
+/* changes font for activites you can do */
 #act-you-can{
     font-weight: 800;
 }
+/* changes font for activities list */
 .act-list{
     font-weight: 800;
 }
+/* changes font for hours */
 #operating-hours {
     font-weight: 700;
 }
+/* changes font for entrance fee */
 #entrance-fee{
     font-weight: 700;
 }
+/* centers text in go back button */
 #go-back-button{
     text-align: center;
 }
@@ -129,6 +139,7 @@ body{
     #park-picture {
         width: 280px;
   }
+  /* styling for weather cards */
     .whole {
     background-color:#1779ba;
     color: rgb(193, 216, 175);

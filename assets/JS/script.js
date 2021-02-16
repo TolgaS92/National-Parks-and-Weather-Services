@@ -1,11 +1,4 @@
-//when i enter the homepage, I have the drop menu for each state
-//an event listener for dropdown that populates a list for each state
-//when i click on the state I want then i get a list of every park within my state
-//populate the list with the info you get from the API, likely state and park as queries
-//the park names become links to a new page that gives me the weather for that location and a picture and a link to the NPS park site
-//we need the weather api to find the location of the chosen park and populate that data into the weatherBox on the html... somehow mapquest helps with this
-//stored locally are 'Your recent adventures' which are the parks you looked at already
-//at the bottom of the page you will always see 'Your recent adventures' to help you plan your vacation, recents populates of the picture of that park you looked at
+
 function render() {
   $("#searchResults").hide();
 
@@ -48,12 +41,14 @@ function render() {
             //when I click on a park image then the recent adventures div is visible
             $(".recent-adventures").css("visibility", "visible");
           })
-
+          /* creating the cards for the park results */
           let card = $("<div>").addClass("card");
+          /* connecting the latitude and longitude to the images for the weather api */
           let imgSrc = $(`<img data-park="${imgParkCode}">`).addClass("image-Park").attr({
             "data-lati": latitude,
             "data-long": longitude
           });
+          /* these if statements are grabbing images from the nps api */
           if (response.images[0] && response.images[0].url) {
             imgSrc.attr("src", response.images[0].url)
           }
@@ -66,7 +61,7 @@ function render() {
             href: response.url,
             target: '_blank'
           });
-
+          /* appending park result card to the page */
           divCell.append(card);
           card.append(span, imgSrc, divCardSection);
           divCardSection.append(pTag);
@@ -124,7 +119,7 @@ function render() {
         }
       })
   }
-
+  /* getting the park info from the chosen park */
   function trailChosen(parkPicked) {
     let chosenUrl = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkPicked + "&stateCode=" + state + "&api_key=egaEomzHPAgI7vA1qMt3Hl0c3Po2WGueGNbdExWh";
 
@@ -192,7 +187,7 @@ function render() {
     trailFind();
   });
 
-
+  /* hiding homepage elements and showing trail and weather infomation */
   $(document).on("click", ".image-Park", function () {
     $("#slide-show").hide();
     $("#parks").hide();
@@ -203,7 +198,7 @@ function render() {
     weatherLatLon(parkLongtitude, parkLatitude);
     trailChosen(parkPicked);
   })
-
+  /* hides park info and shows homepage elements */
   $("#go-back-button").on("click", function () {
     $("#searchResults").hide();
     $("#parks").show();
