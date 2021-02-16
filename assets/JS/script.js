@@ -1,8 +1,7 @@
-
 function render() {
   $("#searchResults").hide();
 
-/* Function to cycle through the images on the homepage */
+  /* Function to cycle through the images on the homepage */
   let slideIndex = 0;
   carousel();
 
@@ -18,7 +17,7 @@ function render() {
     setTimeout(carousel, 2000); // Change image every 2 seconds
   }
 
-/* Setting global variables */
+  /* Setting global variables */
   let state;
   let parkPicked = "";
   /* Getting the localstorage */
@@ -41,12 +40,14 @@ function render() {
             //when I click on a park image then the recent adventures div is visible
             $(".recent-adventures").css("visibility", "visible");
           })
-
+          /* creating the cards for the park results */
           let card = $("<div>").addClass("card");
+          /* connecting the latitude and longitude to the images for the weather api */
           let imgSrc = $(`<img data-park="${imgParkCode}">`).addClass("image-Park").attr({
             "data-lati": latitude,
             "data-long": longitude
           });
+          /* these if statements are grabbing images from the nps api */
           if (response.images[0] && response.images[0].url) {
             imgSrc.attr("src", response.images[0].url)
           }
@@ -59,7 +60,7 @@ function render() {
             href: response.url,
             target: '_blank'
           });
-
+          /* appending park result card to the page */
           divCell.append(card);
           card.append(span, imgSrc, divCardSection);
           divCardSection.append(pTag);
@@ -68,6 +69,84 @@ function render() {
       })
   }
 
+  /* Getting weather with the latitude and longitude from the park api */
+  function weatherLatLon(parkLongtitude, parkLatitude) {
+    let requestWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + parkLatitude + "&lon=" + parkLongtitude + "&units=imperial&appid=ca7c03ab6ebfee5c7d96f4deeccbecc0";
+
+    fetch(requestWeatherUrl)
+      .then(function (response) {
+        return response.json();
+      }).then(function (response) {
+        for (let i = 0; i < 40; i += 8) {
+          let days = response.list[i];
+          let cardInit = $("<div>").addClass("whole");
+          let cardDay = $("<div>").text(days.dt_txt.slice(0, 10));
+          let degree = $("<p>").text(Math.round(days.main.temp) + "˚F");
+          let humid = $("<p>").text("Humidity: " + days.main.humidity + "%");
+          let wind = $("<p>").text("wind Speed: " + Math.round(days.wind.speed) + " mph");
+          let icon = $("<img>");
+          icon.attr("src", "http://openweathermap.org/img/wn/" + days.weather[0].icon + "@2x.png");
+          $("#weather-for-park").append(cardInit.append(cardDay, degree, icon, humid, wind));
+        }
+      })
+  }
+  /* getting the park info from the chosen park */
+  function trailChosen(parkPicked) {
+    let chosenUrl = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkPicked + "&stateCode=" + state + "&api_key=egaEomzHPAgI7vA1qMt3Hl0c3Po2WGueGNbdExWh";
+
+    fetch(chosenUrl)
+      .then(function (response) {
+        return response.json();
+      }).then(function (response) {
+        $("#parkName").empty();
+        $("#park-picture").empty();
+        $("#operating-hours").empty();
+        $("#entrance-fee").empty();
+        $("#act-you-can").empty();
+        $("#weather-for-park").empty();
+        for (i = 0; i < response.data.length; i++) {
+          let pickedParkName = $("<p>").text(response.data[i].fullName);
+          $("#parkName").append(pickedParkName);
+          let imageOfPark = $("<img>");
+          if (response.data[i].images.length === 0
+          ) {
+            imageOfPark.attr("src", "./images/img_34.png")
+          }
+          else {
+            imageOfPark.attr("src", response.data[i].images[0].url);
+          }
+          $("#park-picture").append(imageOfPark);
+          let operatingHours = $("<p>").text(response.data[i].operatingHours[i].description);
+          $("#operating-hours").append(operatingHours);
+          let entFee = $("<p>");
+          if (response.data[i].entranceFees[i].cost.length === 0) {
+            entFee.text("There is No Fee information found")
+          } else {
+            entFee.text("$ " + response.data[i].entranceFees[i].cost);
+          }
+          $("#entrance-fee").append(entFee);
+          let thingsToDo = response.data[i].activities;
+          for (a = 0; a < thingsToDo.length; a++) {
+            let activitiesLi = $("<li>").addClass("act-list").text(thingsToDo[a].name);
+            $("#act-you-can").append(activitiesLi);
+          }
+        }
+      })
+  }
+
+  /* Seacrhed state code functıon appears ın the asıde )index.html */
+  function searchedStates() {
+    $("#searched").empty();
+    for (let i = 0; i < cityCodeSearched.length; i++) {
+      let el = $("<p class='city-code'>").text("You have recently visited: ");
+      el.attr("data", cityCodeSearched[i]);
+      el.text(cityCodeSearched[i]);
+      $("#searched").append(el);
+    }
+
+  }
+
+  searchedStates();
 
   $("#SubmitBtn").on("click", function (event) {
     event.preventDefault();
@@ -96,79 +175,6 @@ function render() {
     localStorage.setItem("city-code", JSON.stringify(cityCodeSearched));
     $("#given-input").val("");
   })
-  /* Getting weather with the latitude and longitude from the park api */
-  function weatherLatLon(parkLongtitude, parkLatitude) {
-    let requestWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + parkLatitude + "&lon=" + parkLongtitude + "&units=imperial&appid=ca7c03ab6ebfee5c7d96f4deeccbecc0";
-
-    fetch(requestWeatherUrl)
-      .then(function (response) {
-        return response.json();
-      }).then(function (response) {
-        for (let i = 0; i < 40; i += 8) {
-          let days = response.list[i];
-          let cardInit = $("<div>").addClass("whole");
-          let cardDay = $("<div>").text(days.dt_txt.slice(0, 10));
-          let degree = $("<p>").text(Math.round(days.main.temp) + "˚F");
-          let humid = $("<p>").text("Humidity: " + days.main.humidity + "%");
-          let wind = $("<p>").text("wind Speed: " + Math.round(days.wind.speed) + " mph");
-          let icon = $("<img>");
-          icon.attr("src", "http://openweathermap.org/img/wn/" + days.weather[0].icon + "@2x.png");
-          $("#weather-for-park").append(cardInit.append(cardDay, degree, icon, humid, wind));
-        }
-      })
-  }
-
-  function trailChosen(parkPicked) {
-    let chosenUrl = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkPicked + "&stateCode=" + state + "&api_key=egaEomzHPAgI7vA1qMt3Hl0c3Po2WGueGNbdExWh";
-
-    fetch(chosenUrl)
-      .then(function (response) {
-        return response.json();
-      }).then(function (response) {
-        for (i = 0; i < response.data.length; i++) {
-          let pickedParkName = $("<p>").text(response.data[i].fullName);
-          $("#parkName").append(pickedParkName);
-          let imageOfPark = $("<img>");
-          if (response.data[i].images.length === 0
-          ) {
-            imageOfPark.attr("src", "./images/img_34.png")
-          }
-          else {
-            imageOfPark.attr("src", response.data[i].images[0].url);
-          }
-          $("#park-picture").append(imageOfPark);
-          let operatingHours = $("<p>").text(response.data[i].operatingHours[i].description);
-          $("#operating-hours").append(operatingHours);
-          let entFee = $("<p>");
-          if (response.data[i].entranceFees[i].cost.length === 0) {
-            entFee.text("There is No Fee information found")
-          } else {
-            entFee.text("$ " + response.data[i].entranceFees[i].cost);
-          }
-          $("#entrance-fee").append(entFee);
-          let thingsToDo = response.data[i].activities;
-          for (a = 0; a < thingsToDo.length; a++) {
-            let activitiesLi = $("<li>").addClass("act-list").text(thingsToDo[a].name);
-            $("#act-you-can").append(activitiesLi);
-          }
-          $("#searchMat").css("display", "none");
-        }
-      })
-  }
-
-  /* Seacrhed state code functıon appears ın the asıde )index.html */
-  function searchedStates() {
-    $("#searched").empty();
-    for (let i = 0; i < cityCodeSearched.length; i++) {
-      let el = $("<p class='city-code'>").text("You have recently visited: ");
-      el.attr("data", cityCodeSearched[i]);
-      el.text(cityCodeSearched[i]);
-      $("#searched").append(el);
-    }
-
-  }
-
-  searchedStates();
   /* It makes the searched statecode as links */
   $(document).on("click", ".city-code", function () {
     state = $(this).text();
@@ -185,7 +191,7 @@ function render() {
     trailFind();
   });
 
-
+  /* hiding homepage elements and showing trail and weather infomation */
   $(document).on("click", ".image-Park", function () {
     $("#slide-show").hide();
     $("#parks").hide();
@@ -196,7 +202,7 @@ function render() {
     weatherLatLon(parkLongtitude, parkLatitude);
     trailChosen(parkPicked);
   })
-
+  /* hides park info and shows homepage elements */
   $("#go-back-button").on("click", function () {
     $("#searchResults").hide();
     $("#parks").show();
