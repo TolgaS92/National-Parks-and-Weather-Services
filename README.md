@@ -25,29 +25,29 @@ Nothing is required of the User
 ## Screenshots
 
 - Home Page
-![alt text](./images/Home-Page.PNG)
+![alt text](./images/home-page.PNG)
 - About Page
 ![alt text](./images/about-page.PNG)
 - Park Page
 ![alt text](./images/park-page.PNG)
 - Search Results
-![alt text](./images/search-results)
+![alt text](./images/search-results.PNG)
 
 ## Features
-National Park Service API
-https://www.nps.gov/subjects/developer/api-documentation.htm
-Open Weather API
-https://openweathermap.org/api
-Foundation CSS
-https://get.foundation/
+1. National Park Service API
+    https://www.nps.gov/subjects/developer/api-documentation.htm
+2. Open Weather API
+    https://openweathermap.org/api
+3. Foundation CSS
+    https://get.foundation/
 
 ## Links
 1. [github.io](https://tolgas92.github.io/Project-1-DU-Bootcamp/) 
 2. [github](https://github.com/TolgaS92/Project-1-DU-Bootcamp)
 
 ## Libraries
-1. - jQuery
-2. - Foundation
+1. jQuery
+2. Foundation
 
 ## Credit
 ![alt text](./images/image.png)
