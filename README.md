@@ -50,16 +50,16 @@ Nothing is required of the User
 2. Foundation
 
 ## Credit
-![alt text](./images/image.png)
-- MUHA04/GETTY IMAGES
-![alt text](./images/image1.png)
-- http://worldbeautifullplaces.blogspot.com/2012/05/glacier-national-park-usa.html
-![alt text](./images/image2.png)
-- http://getwallpapers.com/collection/glacier-national-park-wallpaper
-![alt text](./images/image3.png)
-- https://windows10spotlight.com/images/d93c385aff37589622efe87f7d095806
-![alt text](./images/image4.png)
-- Joe Braun, https://www.citrusmilo.com/zionguide/
+![Zion National Park](./images/try11.jpg)
+- https://www.1zoom.me/en/wallpaper/537305/z4323.9/1920x1080
+![Grand Canyon National Park](./images/try22.jpg)
+- https://hdqwalls.com/download/1920x1080/grand-canyon-national-park
+![Yosemite National Park](./images/try33.jpg)
+- https://www.ingoscholtes.photo/portfolio/yosemite.html
+![Bryce Canyon](./images/try44.jpg)
+- https://www.wallpapers13.com/bryce-canyon-and-zion-national-park-utah-united-states-huge-red-and-brown-mountains-hd-wallpapers-for-mobile-phones-tablet-and-laptop-1920x1200/
+![Glacier National Park](./images/try55.jpg)
+- https://akspic.com/image/7789-mountainous_landforms-glacier_national_park-nature_reserve-mountains-nature/1920x1080
 
 ## Authors
 - Morgan Franke
