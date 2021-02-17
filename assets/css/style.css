@@ -10,9 +10,9 @@ body{
 }
 /* carosel for images */
 .mySlides{
-    width: 75%;
-    height: 650px;
-    margin: 0 250px 0 250px;
+    width: auto;
+    height: auto;
+    margin: 0px 0px 0 225px;
 }
 /* adjusting the grid */
 .grid-container {
@@ -164,6 +164,11 @@ body{
     border: 10px #0a0a0a;
     border-radius: 25px;
     width: 110px;
+    }
+    .mySlides{
+        width: auto;
+        height: auto;
+        margin: 0px 0px 0px 0px;
     }
 }
 
