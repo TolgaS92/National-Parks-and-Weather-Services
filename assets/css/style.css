@@ -34,7 +34,7 @@ body{
 /**/
 .whole {
     background-color:#1779ba;
-    color: rgb(193, 216, 175);
+    color: #cedae2;
     font-weight: 700;
     margin-top: 25px;
     margin-right: 20px;
@@ -93,9 +93,12 @@ body{
 }
 /* text adjustments on results page */
 .activity-tx {
+    background-color: white;
+    border: black;
+    border-radius: 15px;
     color: rgb(117, 13, 27);
     font-size: 24px;
-    font-weight: bolder;
+    font-weight: 800;
     text-align: center;
 }
 /* centers park name */
@@ -111,27 +114,27 @@ body{
 }
 /* changes font for park information */
 #info-Park{
-    font-weight: 800;
+    font-weight: 600;
 }
 /* changes font for activites you can do */
 #act-you-can{
-    font-weight: 800;
+    font-weight: 600;
 }
 /* changes font for activities list */
 .act-list{
-    font-weight: 800;
+    font-weight: 600;
 }
 /* changes font for hours */
 #operating-hours {
-    font-weight: 700;
+    font-weight: 600;
 }
 /* changes font for directions information */
 #directions-info {
-    font-weight: 700;
+    font-weight: 600;
 }
 /* changes font for entrance fee */
 #entrance-fee{
-    font-weight: 700;
+    font-weight: 600;
 }
 /* centers text in go back button */
 #go-back-button{
@@ -150,7 +153,7 @@ body{
   /* styling for weather cards */
     .whole {
     background-color:#1779ba;
-    color: rgb(193, 216, 175);
+    color: #cedae2;
     font-weight: 700;
     margin-top: 25px;
     margin-right: 20px;
