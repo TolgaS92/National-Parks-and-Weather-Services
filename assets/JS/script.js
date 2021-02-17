@@ -100,11 +100,14 @@ function render() {
       }).then(function (response) {
         $("#parkName").empty();
         $("#park-picture").empty();
+        $("#info-Park").empty();
         $("#operating-hours").empty();
+        $("#directions-info").empty();
         $("#entrance-fee").empty();
         $("#act-you-can").empty();
         $("#weather-for-park").empty();
         for (i = 0; i < response.data.length; i++) {
+          console.log(response);
           let pickedParkName = $("<p>").text(response.data[i].fullName);
           $("#parkName").append(pickedParkName);
           let imageOfPark = $("<img>");
@@ -116,8 +119,12 @@ function render() {
             imageOfPark.attr("src", response.data[i].images[0].url);
           }
           $("#park-picture").append(imageOfPark);
+          let informationPark = $("<p>").text(response.data[i].description);
+          $("#info-Park").append(informationPark);
           let operatingHours = $("<p>").text(response.data[i].operatingHours[i].description);
           $("#operating-hours").append(operatingHours);
+          let directionInfo = $("<p>").text(response.data[i].directionsInfo);
+          $("#directions-info").append(directionInfo);
           let entFee = $("<p>");
           if (response.data[i].entranceFees[i].cost.length === 0) {
             entFee.text("There is No Fee information found")
@@ -182,8 +189,10 @@ function render() {
     $("#parks").empty();
     $("#parkName").empty();
     $("#park-picture").empty();
+    $("#info-Park").empty();
     $("#act-you-can").empty();
     $("#operating-hours").empty();
+    $("#directions-info").empty();
     $("#entrance-fee").empty();
     $("#weather-for-park").empty();
     $("#parks").show();
@@ -208,8 +217,10 @@ function render() {
     $("#parks").show();
     $("#parkName").empty();
     $("#park-picture").empty();
+    $("#info-Park").empty();
     $("#act-you-can").empty();
     $("#operating-hours").empty();
+    $("#directions-info").empty();
     $("#entrance-fee").empty();
     $("#weather-for-park").empty();
     $("#searchMat").css("display", "block");

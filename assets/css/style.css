@@ -109,6 +109,10 @@ body{
 #park-picture {
     width: 600px;
 }
+/* changes font for park information */
+#info-Park{
+    font-weight: 800;
+}
 /* changes font for activites you can do */
 #act-you-can{
     font-weight: 800;
@@ -119,6 +123,10 @@ body{
 }
 /* changes font for hours */
 #operating-hours {
+    font-weight: 700;
+}
+/* changes font for directions information */
+#directions-info {
     font-weight: 700;
 }
 /* changes font for entrance fee */
