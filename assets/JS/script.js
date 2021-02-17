@@ -1,8 +1,7 @@
-
 function render() {
   $("#searchResults").hide();
 
-/* Function to cycle through the images on the homepage */
+  /* Function to cycle through the images on the homepage */
   let slideIndex = 0;
   carousel();
 
@@ -18,7 +17,7 @@ function render() {
     setTimeout(carousel, 2000); // Change image every 2 seconds
   }
 
-/* Setting global variables */
+  /* Setting global variables */
   let state;
   let parkPicked = "";
   /* Getting the localstorage */
@@ -70,34 +69,6 @@ function render() {
       })
   }
 
-
-  $("#SubmitBtn").on("click", function (event) {
-    event.preventDefault();
-    $("#recent-adv").css("display", "block");
-    $("#searched").css("display", "block");
-    $("#slide-show").hide();
-    $("#search-bar").hide();
-    $("#parks").empty();
-    $("#searchResults").hide();
-    $("#parks").show();
-    state = $("#given-input").val().trim().toUpperCase();
-    /* Adding the code that searched last into the searched list */
-    if (!cityCodeSearched.includes(state)) {
-      /* pushes the statecode you searched */
-      (cityCodeSearched).push(state);
-    }
-    /* deletes the state code more than 4 */
-    if (cityCodeSearched.length > 4) {
-      /* pushes out the statecode you searched last more than 3 */
-      cityCodeSearched.shift();
-    }
-
-    searchedStates()
-    trailFind();
-    /* Local Storage Stores for Searched States */
-    localStorage.setItem("city-code", JSON.stringify(cityCodeSearched));
-    $("#given-input").val("");
-  })
   /* Getting weather with the latitude and longitude from the park api */
   function weatherLatLon(parkLongtitude, parkLatitude) {
     let requestWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + parkLatitude + "&lon=" + parkLongtitude + "&units=imperial&appid=ca7c03ab6ebfee5c7d96f4deeccbecc0";
@@ -127,6 +98,12 @@ function render() {
       .then(function (response) {
         return response.json();
       }).then(function (response) {
+        $("#parkName").empty();
+        $("#park-picture").empty();
+        $("#operating-hours").empty();
+        $("#entrance-fee").empty();
+        $("#act-you-can").empty();
+        $("#weather-for-park").empty();
         for (i = 0; i < response.data.length; i++) {
           let pickedParkName = $("<p>").text(response.data[i].fullName);
           $("#parkName").append(pickedParkName);
@@ -153,7 +130,6 @@ function render() {
             let activitiesLi = $("<li>").addClass("act-list").text(thingsToDo[a].name);
             $("#act-you-can").append(activitiesLi);
           }
-          $("#searchMat").css("display", "none");
         }
       })
   }
@@ -171,6 +147,34 @@ function render() {
   }
 
   searchedStates();
+
+  $("#SubmitBtn").on("click", function (event) {
+    event.preventDefault();
+    $("#recent-adv").css("display", "block");
+    $("#searched").css("display", "block");
+    $("#slide-show").hide();
+    $("#search-bar").hide();
+    $("#parks").empty();
+    $("#searchResults").hide();
+    $("#parks").show();
+    state = $("#given-input").val().trim().toUpperCase();
+    /* Adding the code that searched last into the searched list */
+    if (!cityCodeSearched.includes(state)) {
+      /* pushes the statecode you searched */
+      (cityCodeSearched).push(state);
+    }
+    /* deletes the state code more than 4 */
+    if (cityCodeSearched.length > 4) {
+      /* pushes out the statecode you searched last more than 3 */
+      cityCodeSearched.shift();
+    }
+
+    searchedStates()
+    trailFind();
+    /* Local Storage Stores for Searched States */
+    localStorage.setItem("city-code", JSON.stringify(cityCodeSearched));
+    $("#given-input").val("");
+  })
   /* It makes the searched statecode as links */
   $(document).on("click", ".city-code", function () {
     state = $(this).text();
