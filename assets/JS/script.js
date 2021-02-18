@@ -107,7 +107,6 @@ function render() {
         $("#act-you-can").empty();
         $("#weather-for-park").empty();
         for (i = 0; i < response.data.length; i++) {
-          console.log(response);
           let pickedParkName = $("<p>").text(response.data[i].fullName);
           $("#parkName").append(pickedParkName);
           let imageOfPark = $("<img>");
@@ -145,7 +144,7 @@ function render() {
   function searchedStates() {
     $("#searched").empty();
     for (let i = 0; i < cityCodeSearched.length; i++) {
-      let el = $("<p class='city-code'>").text("You have recently visited: ");
+      let el = $("<p class='city-code'>");
       el.attr("data", cityCodeSearched[i]);
       el.text(cityCodeSearched[i]);
       $("#searched").append(el);
